@@ -14,13 +14,13 @@ namespace Safari.Infrastructure
 
         public void ActOnNotification(string message)
         {
-            string docPath = System.Web.Hosting.HostingEnvironment.MapPath(LogFileDirectory);
+            //string docPath = System.Web.Hosting.HostingEnvironment.MapPath(LogFileDirectory);
             _logFileName = MakeLogFileName(false);
 
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, _logFileName), true))
-            {
-                outputFile.WriteLine("Error EmailSender. No existe implementación para este servicio.");
-            }
+            //using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, _logFileName), true))
+            //{
+            //    outputFile.WriteLine("Error EmailSender. No existe implementación para este servicio.");
+            //}
         }
 
         private static string MakeLogFileName(bool isArchive)

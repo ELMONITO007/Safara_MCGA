@@ -28,11 +28,11 @@ namespace Safari.IOC.DependencyResolution
         #region Public Methods and Operators
 
         public void Process(Type type, Registry registry) {
-            if (type.CanBeCastTo<Controller>() && !type.IsAbstract) {
-                registry.For(type).LifecycleIs(new UniquePerRequestLifecycle());
+            //if (type.CanBeCastTo<Controller>() && !type.IsAbstract) {
+            //    registry.For(type).LifecycleIs(new UniquePerRequestLifecycle());
             }
         }
 
         #endregion
     }
-}
+//}

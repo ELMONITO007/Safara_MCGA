@@ -7,25 +7,35 @@ using System.Collections.ObjectModel;
 
 namespace Safari.Business
 {
-    public partial class EspecieComponent
+    public class EspecieComponent : Component<Especie>
     {
-        public Especie Agregar(Especie especie)
+        public override Especie Create(Especie objeto)
         {
             Especie result = default(Especie);
             var especieDAC = new EspecieDAC();
 
-            result = especieDAC.Create(especie);
+            result = especieDAC.Create(objeto);
             return result;
         }
 
-        public List<Especie> ListarTodos()
+        public override void Delete(int id)
         {
-            List<Especie> result = default(List<Especie>);
+            throw new NotImplementedException();
+        }
 
-            var especieDAC = new EspecieDAC();
-            result = especieDAC.Read();
-            return result;
+        public override List<Especie> Read()
+        {
+            throw new NotImplementedException();
+        }
 
+        public override Especie ReadBy(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Update(Especie objeto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

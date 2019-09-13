@@ -23,7 +23,7 @@ using WebActivatorEx;
 [assembly: ApplicationShutdownMethod(typeof(StructuremapMvc), "End")]
 
 namespace Safari.IOC.App_Start {
-	using System.Web.Mvc;
+	//using System.Web.Mvc;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -47,7 +47,7 @@ namespace Safari.IOC.App_Start {
         public static void Start() {
             IContainer container = IoC.Initialize();
             StructureMapDependencyScope = new StructureMapDependencyScope(container);
-            DependencyResolver.SetResolver(StructureMapDependencyScope);
+            //DependencyResolver.SetResolver(StructureMapDependencyScope);
             DynamicModuleUtility.RegisterModule(typeof(StructureMapScopeModule));
         }
 

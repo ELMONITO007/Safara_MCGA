@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EspeciesProcess.cs" />
     <Compile Include="MediaType.cs" />
     <Compile Include="ProcessComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

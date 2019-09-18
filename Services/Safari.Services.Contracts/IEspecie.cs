@@ -9,5 +9,7 @@ namespace Safari.Services.Contracts
 {
    public interface IEspecie : Contracts<Especie>
     {
+
+
     }
 }

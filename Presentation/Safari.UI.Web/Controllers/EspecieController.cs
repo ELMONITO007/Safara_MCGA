@@ -19,6 +19,7 @@ namespace Safari.UI.Web.Controllers
         }
 
         // GET: Especie/Details/5
+        [Route("Detalles", Name = "EspecieControllerRouteDetails")]
         public ActionResult Details(int id)
         {
             EspeciesProcess ep = new EspeciesProcess();
@@ -26,11 +27,12 @@ namespace Safari.UI.Web.Controllers
         }
 
         // GET: Especie/Create
+
         public ActionResult Create()
         {
             return View();
         }
-
+        [Route("crear", Name = "EspecieControllerRouteCreate")]
         // POST: Especie/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -50,6 +52,7 @@ namespace Safari.UI.Web.Controllers
         }
 
         // GET: Especie/Edit/5
+        [Route("editar", Name = "EspecieControllerRouteEdit")]
         public ActionResult Edit(int id)
         {
             EspeciesProcess ep = new EspeciesProcess();
@@ -76,6 +79,7 @@ namespace Safari.UI.Web.Controllers
         }
 
         // GET: Especie/Delete/5
+        [Route("eliminar", Name = "EspecieControllerRouteDelete")]
         public ActionResult Delete(int id)
         {
             EspeciesProcess ep = new EspeciesProcess();

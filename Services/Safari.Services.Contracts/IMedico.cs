@@ -7,7 +7,7 @@ using Safari.Entities;
 
 namespace Safari.Services.Contracts
 {
-    interface IMedico : Contracts<Medico>
+  public  interface Imedico : Contracts<Medico>
     {
     }
 }

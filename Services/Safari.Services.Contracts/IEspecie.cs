@@ -7,7 +7,7 @@ using Safari.Entities;
 
 namespace Safari.Services.Contracts
 {
-   public interface IEspecie : Contracts<Especie>
+   public interface Iespecie : Contracts<Especie>
     {
 
 

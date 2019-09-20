@@ -1,21 +1,22 @@
-﻿using Safari.Entities;
-using Safari.Services;
-using Safari.Services.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Safari.Entities;
+using Safari.Services;
+using Safari.Services.Contracts;
+using System.ServiceModel;
 
 namespace Safari.UI.Process
 {
- public   class EspeciesProcess : ProcessComponent
+ public   class MedicoProcess : ProcessComponent
     {
-        public List<Especie> ListarTodos()
+
+        public List<Medico> ListarTodos()
         {
-            List<Especie> result = default(List<Especie>);
-            Iespecie proxy = new EspecieServices();
+            List<Medico> result = default(List<Medico>);
+            Imedico proxy = new MedicoServices();
 
             try
             {
@@ -28,14 +29,14 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public Especie Agregar(Especie especie)
+        public Medico Agregar(Medico medico)
         {
-            Especie result = default(Especie);
-            Iespecie proxy = new EspecieServices();
+            Medico result = default(Medico);
+            Imedico proxy = new MedicoServices();
 
             try
             {
-                result = proxy.Create(especie);
+                result = proxy.Create(medico);
             }
             catch (FaultException fex)
             {
@@ -45,10 +46,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public Especie Ver(int id)
+        public Medico Ver(int id)
         {
-            Especie result = default(Especie);
-            Iespecie proxy = new EspecieServices();
+            Medico result = default(Medico);
+            Imedico proxy = new MedicoServices();
 
             try
             {
@@ -62,10 +63,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public Especie Eliminar(int id)
+        public Medico Eliminar(int id)
         {
-            Especie result = default(Especie);
-            Iespecie proxy = new EspecieServices();
+            Medico result = default(Medico);
+            Imedico proxy = new MedicoServices();
 
             try
             {
@@ -79,14 +80,14 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public Especie Editar(int id, Especie especie)
+        public Medico Editar(int id, Medico medico)
         {
-            Especie result = default(Especie);
-            Iespecie proxy = new EspecieServices();
+            Medico result = default(Medico);
+            Imedico proxy = new MedicoServices();
 
             try
             {
-                proxy.Update( especie);
+                proxy.Update(medico);
                 result = proxy.ReadBy(id);
             }
             catch (FaultException fex)

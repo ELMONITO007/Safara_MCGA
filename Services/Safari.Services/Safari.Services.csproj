@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EspecieServices.cs" />
+    <Compile Include="MedicoServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

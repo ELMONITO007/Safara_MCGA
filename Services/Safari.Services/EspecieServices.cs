@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace Safari.Services
 {
-    public class EspecieServices : IEspecie
+    public class EspecieServices : Iespecie
     {
+
+
         public Especie Create(Especie objeto)
         {
             var bc = new EspecieComponent();
@@ -22,7 +24,7 @@ namespace Safari.Services
             var bc = new EspecieComponent();
             bc.Delete(id);
 
-         
+
         }
 
         public List<Especie> Read()
@@ -34,14 +36,17 @@ namespace Safari.Services
         public Especie ReadBy(int id)
         {
             var bc = new EspecieComponent();
-           return bc.ReadBy(id);
+            return bc.ReadBy(id);
 
         }
+
 
         public void Update(Especie objeto)
         {
             var bc = new EspecieComponent();
             bc.Update(objeto);
         }
+
+        
     }
 }

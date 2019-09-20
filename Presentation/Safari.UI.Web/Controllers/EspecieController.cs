@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Safari.UI.Web.Controllers
-{
+{ [Authorize]
     public class EspecieController : Controller
 
     {
@@ -43,7 +43,7 @@ namespace Safari.UI.Web.Controllers
                 Especie especie = new Especie();
                 especie.Nombre = collection.Get("Nombre");
                 ep.Agregar(especie);
-                return RedirectToAction("Index");
+                return RedirectToAction("Especie");
             }
             catch
             {
@@ -70,7 +70,7 @@ namespace Safari.UI.Web.Controllers
                 especie.Id = Convert.ToInt32(collection.Get("Id"));
                 especie.Nombre = collection.Get("Nombre");
                 ep.Editar(id, especie);
-                return RedirectToAction("Index");
+                return RedirectToAction("Especie");
             }
             catch
             {
@@ -94,7 +94,7 @@ namespace Safari.UI.Web.Controllers
             {
                 EspeciesProcess ep = new EspeciesProcess();
                 ep.Eliminar(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("Especie");
             }
             catch
             {

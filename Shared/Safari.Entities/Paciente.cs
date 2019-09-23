@@ -27,4 +27,4 @@ namespace Safari.Entities
         public override int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
-}
+

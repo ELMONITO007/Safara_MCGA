@@ -10,30 +10,32 @@ using Safari.Entities;
 
 namespace Safari.Data
 {
-    public class MovimientoDAC : DataAccessComponent, IRepository<Movimiento>
+    public class PrecioDAC : DataAccessComponent, IRepository<Precio>
     {
-        public Movimiento Create(Movimiento entity)
+        public Precio Create(Precio entity)
+
+
         {
-            const string SQL_STATEMENT = "insert into Movimiento (Fecha,ClienteId,TipoMovimientoId,Valor)values(@Fecha,@TipoMovientoId,@Valor); SELECT SCOPE_IDENTITY();";
+            const string SQL_STATEMENT = "insert into Precio (TipoServicioId,FechaDesde,FechaHasta,Valor)values(@TipoServicioId,@FechaDesde,@FechaHasta,@Valor); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
+                db.AddInParameter(cmd, "@TipoServicioId", DbType.Int16, entity.tipoServicio.Id);
+                db.AddInParameter(cmd, "@FechaDesde", DbType.DateTime, entity.fechaDesde);
+                db.AddInParameter(cmd, "@FechaHasta", DbType.DateTime, entity.fechaHasta);
                 db.AddInParameter(cmd, "@Valor", DbType.Int32, entity.valor);
-                db.AddInParameter(cmd, "@Fecha", DbType.DateTime, entity.Fecha);
-                db.AddInParameter(cmd, "@ClienteId", DbType.Int32, entity.Cliente.Id);
-                db.AddInParameter(cmd, "@TipoMovientoId", DbType.Int32, entity.tipoMovimiento.Id);
-
-
                 entity.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
-
             }
             return entity;
         }
+          
+
+           
 
         public void Delete(int id)
         {
-            const string SQL_STATEMENT = "DELETE Movimiento WHERE [Id]= @Id ";
+            const string SQL_STATEMENT = "DELETE Precio WHERE [Id]= @Id ";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
@@ -42,11 +44,11 @@ namespace Safari.Data
             }
         }
 
-        public List<Movimiento> Read()
+        public List<Precio> Read()
         {
-            const string SQL_STATEMENT = "SELECT * FROM Movimiento ";
+            const string SQL_STATEMENT = "SELECT * FROM Precio ";
 
-            List<Movimiento> result = new List<Movimiento>();
+            List<Precio> result = new List<Precio>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
@@ -54,18 +56,18 @@ namespace Safari.Data
                 {
                     while (dr.Read())
                     {
-                        Movimiento movimiento = LoadMovimiento(dr);
-                        result.Add(movimiento);
+                        Precio precio = LoadPrecio(dr);
+                        result.Add(precio);
                     }
                 }
             }
             return result;
         }
 
-        public Movimiento ReadBy(int id)
+        public Precio ReadBy(int id)
         {
-            const string SQL_STATEMENT = "SELECT * FROM Movimiento WHERE [Id]=@Id ";
-            Movimiento movimiento = null;
+            const string SQL_STATEMENT = "SELECT * FROM Precio WHERE [Id]=@Id ";
+            Precio precio = null;
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
@@ -75,37 +77,38 @@ namespace Safari.Data
                 {
                     if (dr.Read())
                     {
-                        movimiento = LoadMovimiento(dr);
+                        precio = LoadPrecio(dr);
                     }
                 }
             }
-            return movimiento;
+            return precio;
         }
 
-        public void Update(Movimiento entity)
+        public void Update(Precio entity)
         {
-            const string SQL_STATEMENT = "update Movimiento set Fecha=@Fecha,ClienteId=@ClienteId,TipoMovimientoId=@TipoMovimientoId,Valor=@Valor  WHERE [Id]= @Id";
+            const string SQL_STATEMENT = "	update Precio set TipoServicioId=@TipoServicioId, FechaDesde=@FechaDesde,FechaHasta=@FechaHasta,Valor=@Valor WHERE [Id]= @Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Id", DbType.Int32, entity.Id);
+                db.AddInParameter(cmd, "@TipoServicioId", DbType.Int16, entity.tipoServicio.Id);
+                db.AddInParameter(cmd, "@FechaDesde", DbType.DateTime, entity.fechaDesde);
+                db.AddInParameter(cmd, "@FechaHasta", DbType.DateTime, entity.fechaHasta);
                 db.AddInParameter(cmd, "@Valor", DbType.Int32, entity.valor);
-                db.AddInParameter(cmd, "@Fecha", DbType.DateTime, entity.Fecha);
-                db.AddInParameter(cmd, "@ClienteId", DbType.Int32, entity.Cliente.Id);
-                db.AddInParameter(cmd, "@TipoMovientoId", DbType.Int32, entity.tipoMovimiento.Id);
                 db.ExecuteNonQuery(cmd);
             }
         }
-        private Movimiento LoadMovimiento(IDataReader dr)
+
+        private Precio LoadPrecio(IDataReader dr)
         {
-            Movimiento movimiento = new Movimiento();
-            movimiento.Id = GetDataValue<int>(dr, "Id");
-            movimiento.Fecha = GetDataValue<DateTime>(dr, "Fecha");
-            movimiento.Cliente.Id= GetDataValue<int>(dr, "ClienteId");
-            movimiento.tipoMovimiento.Id = GetDataValue<int>(dr, "TipoMovimientoId");
-            movimiento.valor = GetDataValue<int>(dr, "Valor");
-            return movimiento;
+            Precio precio = new Precio();
+            precio.Id = GetDataValue<int>(dr, "Id");
+            precio.fechaDesde = GetDataValue<DateTime>(dr, "FechaDesde");
+            precio.fechaHasta = GetDataValue<DateTime>(dr, "FechaHasta");
+            precio.tipoServicio.Id = GetDataValue<int>(dr, "TIpoServicioId");
+            precio.valor = GetDataValue<int>(dr, "Valor");
+            return precio;
         }
     }
 }

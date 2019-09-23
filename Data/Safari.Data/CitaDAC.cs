@@ -87,11 +87,12 @@ namespace Safari.Data
 
         public void Update(Cita entity)
         {
-            const string SQL_STATEMENT = "update Cita set Fecha=@Fecha , MedicoId=@MedicoIF,PacienteId=@PacienteId,SalaId=@SalaId,TipoServicioId=@TipoServicioId,Estado=@Estado,ChangedBy=@ChangeBy,ChangedDate=@ChangeDate ";
+            const string SQL_STATEMENT = "update Cita set Fecha=@Fecha , MedicoId=@MedicoIF,PacienteId=@PacienteId,SalaId=@SalaId,TipoServicioId=@TipoServicioId,Estado=@Estado,ChangedBy=@ChangeBy,ChangedDate=@ChangeDate  WHERE [Id]= @Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
+                db.AddInParameter(cmd, "@Id", DbType.Int32, entity.Id);
                 db.AddInParameter(cmd, "@fecha", DbType.DateTime, entity.fecha);
                 db.AddInParameter(cmd, "@MedicoId", DbType.Int32, entity.medico.Id);
                 db.AddInParameter(cmd, "@PacienteId", DbType.Int32, entity.Paciente.Id);

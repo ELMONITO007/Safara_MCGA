@@ -91,6 +91,7 @@ namespace Safari.Data
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
+                db.AddInParameter(cmd, "@Id", DbType.Int32, entity.Id);
                 db.AddInParameter(cmd, "@Nombre", DbType.AnsiString, entity.Nombre);
                 db.AddInParameter(cmd, "@TipoMatricula", DbType.AnsiString, entity.TipoMatricula);
                 db.AddInParameter(cmd, "@Apellido", DbType.Int64, entity.Apellido);

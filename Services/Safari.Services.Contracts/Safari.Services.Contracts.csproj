@@ -41,9 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts.cs" />
+    <Compile Include="ICita.cs" />
     <Compile Include="ICliente.cs" />
     <Compile Include="IEspecie.cs" />
     <Compile Include="IMedico.cs" />
+    <Compile Include="IMovimiento.cs" />
+    <Compile Include="IPaciente.cs" />
+    <Compile Include="IPrecio.cs" />
     <Compile Include="ISala.cs" />
     <Compile Include="ITipoMovimiento.cs" />
     <Compile Include="ITipoServicio.cs" />

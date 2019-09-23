@@ -9,38 +9,38 @@ using Safari.Services.Contracts;
 
 namespace Safari.Services
 {
-  public  class ClienteServices  : ICliente
+   public class MovimientoServices : IMovimiento
     {
-
-        public Cliente Create(Cliente objeto)
+        public Movimiento Create(Movimiento objeto)
         {
-            var bc = new ClienteComponent();
+            var bc = new MovimientoComponent();
             return bc.Create(objeto);
         }
 
         public void Delete(int id)
         {
-            var bc = new ClienteComponent();
+            var bc = new MovimientoComponent();
             bc.Delete(id);
         }
 
-        public List<Cliente> Read()
+        public List<Movimiento> Read()
         {
 
-            var bc = new ClienteComponent();
+            var bc = new MovimientoComponent();
             return bc.Read();
         }
 
-        public Cliente ReadBy(int id)
+        public Movimiento ReadBy(int id)
         {
-            var bc = new ClienteComponent();
+            var bc = new MovimientoComponent();
             return bc.ReadBy(id);
         }
 
-        public void Update(Cliente objeto)
+        public void Update(Movimiento objeto)
         {
-            var bc = new ClienteComponent();
+            var bc = new MovimientoComponent();
             bc.Update(objeto);
         }
+
     }
 }

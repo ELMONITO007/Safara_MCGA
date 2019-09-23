@@ -9,38 +9,40 @@ using Safari.Services.Contracts;
 
 namespace Safari.Services
 {
-  public  class ClienteServices  : ICliente
+   public class CitaServices : ICita
     {
 
-        public Cliente Create(Cliente objeto)
+        public Cita Create(Cita objeto)
         {
-            var bc = new ClienteComponent();
+            var bc = new CitaComponent();
             return bc.Create(objeto);
         }
 
         public void Delete(int id)
         {
-            var bc = new ClienteComponent();
+            var bc = new CitaComponent();
             bc.Delete(id);
         }
 
-        public List<Cliente> Read()
+        public List<Cita> Read()
         {
 
-            var bc = new ClienteComponent();
+            var bc = new CitaComponent();
             return bc.Read();
         }
 
-        public Cliente ReadBy(int id)
+        public Cita ReadBy(int id)
         {
-            var bc = new ClienteComponent();
+            var bc = new CitaComponent();
             return bc.ReadBy(id);
         }
 
-        public void Update(Cliente objeto)
+        public void Update(Cita objeto)
         {
-            var bc = new ClienteComponent();
+            var bc = new CitaComponent();
             bc.Update(objeto);
         }
+
+
     }
 }

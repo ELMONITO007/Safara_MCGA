@@ -19,26 +19,26 @@ namespace Safari.Services
 
         public void Delete(int id)
         {
-            var bc = new PrecioServices();
+            var bc = new PrecioComponent();
             bc.Delete(id);
         }
 
         public List<Precio> Read()
         {
 
-            var bc = new PrecioServices();
+            var bc = new PrecioComponent();
             return bc.Read();
         }
 
         public Precio ReadBy(int id)
         {
-            var bc = new PrecioServices();
+            var bc = new PrecioComponent();
             return bc.ReadBy(id);
         }
 
         public void Update(Precio objeto)
         {
-            var bc = new PrecioServices();
+            var bc = new PrecioComponent();
             bc.Update(objeto);
         }
     }

@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitaServices.cs" />
+    <Compile Include="ClienteServices.cs" />
     <Compile Include="EspecieServices.cs" />
     <Compile Include="MedicoServices.cs" />
+    <Compile Include="MovimientoServices.cs" />
     <Compile Include="PacienteServices.cs" />
     <Compile Include="PrecioServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

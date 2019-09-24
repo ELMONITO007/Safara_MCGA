@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Safari.UI.Process
 {
-    public class TipoServicioProcess : ProcessComponent, Process<TipoServicio>
+    public class ClienteProcess : ProcessComponent, Process<Cliente>
     {
-        public TipoServicio Agregar(TipoServicio objeto)
+        public Cliente Agregar(Cliente objeto)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+            Cliente result = default(Cliente);
+            ICliente proxy = new ClienteServices();
 
             try
             {
@@ -29,11 +29,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Editar(int id, TipoServicio objeto)
+        public Cliente Editar(int id, Cliente objeto)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
-
+            Cliente result = default(Cliente);
+            ICliente proxy = new ClienteServices();
             try
             {
                 proxy.Update(objeto);
@@ -47,11 +46,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Eliminar(int id)
+        public Cliente Eliminar(int id)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
-
+            Cliente result = default(Cliente);
+            ICliente proxy = new ClienteServices();
             try
             {
                 proxy.Delete(id);
@@ -62,12 +60,13 @@ namespace Safari.UI.Process
             }
 
             return result;
+
         }
 
-        public List<TipoServicio> ListarTodos()
+        public List<Cliente> ListarTodos()
         {
-            List<TipoServicio> result = default(List<TipoServicio>);
-            ITipoServicio proxy = new TipoServicioServices();
+            List<Cliente> result = default(List<Cliente>);
+            ICliente proxy = new ClienteServices();
 
 
             try
@@ -81,10 +80,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Ver(int id)
+        public Cliente Ver(int id)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+            Cliente result = default(Cliente);
+            ICliente proxy = new ClienteServices();
 
             try
             {

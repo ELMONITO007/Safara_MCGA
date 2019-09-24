@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Safari.UI.Process
 {
-    public class TipoServicioProcess : ProcessComponent, Process<TipoServicio>
+    public class CitaProcess : ProcessComponent, Process<Cita>
     {
-        public TipoServicio Agregar(TipoServicio objeto)
+        public Cita Agregar(Cita objeto)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+            Cita result = default(Cita);
+            ICita proxy = new CitaServices();
 
             try
             {
@@ -29,11 +29,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Editar(int id, TipoServicio objeto)
+        public Cita Editar(int id, Cita objeto)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
-
+            Cita result = default(Cita);
+            ICita proxy = new CitaServices();
             try
             {
                 proxy.Update(objeto);
@@ -47,11 +46,11 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Eliminar(int id)
+        public Cita Eliminar(int id)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
-
+            Cita result = default(Cita);
+            ICita proxy = new CitaServices();
+            
             try
             {
                 proxy.Delete(id);
@@ -63,11 +62,12 @@ namespace Safari.UI.Process
 
             return result;
         }
+       
 
-        public List<TipoServicio> ListarTodos()
+        public List<Cita> ListarTodos()
         {
-            List<TipoServicio> result = default(List<TipoServicio>);
-            ITipoServicio proxy = new TipoServicioServices();
+            List<Cita> result = default(List<Cita>);
+            ICita proxy = new CitaServices();
 
 
             try
@@ -81,10 +81,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Ver(int id)
+        public Cita Ver(int id)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+            Cita result = default(Cita);
+            ICita proxy = new CitaServices();
 
             try
             {

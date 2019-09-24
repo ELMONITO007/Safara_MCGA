@@ -10,12 +10,14 @@ using System.Threading.Tasks;
 
 namespace Safari.UI.Process
 {
-    public class TipoServicioProcess : ProcessComponent, Process<TipoServicio>
+    public class PacienteProcess : ProcessComponent, Process<Paciente>
     {
-        public TipoServicio Agregar(TipoServicio objeto)
+    {
+public Paciente Agregar(Paciente objeto)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+
+            Paciente result = default(Paciente);
+            IPaciente proxy = new PacienteServices();
 
             try
             {
@@ -29,11 +31,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Editar(int id, TipoServicio objeto)
+        public Paciente Editar(int id, Paciente objeto)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
-
+            Paciente result = default(Paciente);
+            IPaciente proxy = new PacienteServices();
             try
             {
                 proxy.Update(objeto);
@@ -47,11 +48,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Eliminar(int id)
+        public Paciente Eliminar(int id)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
-
+            Paciente result = default(Paciente);
+            IPaciente proxy = new PacienteServices();
             try
             {
                 proxy.Delete(id);
@@ -61,13 +61,13 @@ namespace Safari.UI.Process
                 throw new ApplicationException(fex.Message);
             }
 
-            return result;
+            return result; ;
         }
 
-        public List<TipoServicio> ListarTodos()
+        public List<Paciente> ListarTodos()
         {
-            List<TipoServicio> result = default(List<TipoServicio>);
-            ITipoServicio proxy = new TipoServicioServices();
+            List<Paciente> result = default(List<Paciente>);
+            IPaciente proxy = new PacienteServices();
 
 
             try
@@ -81,11 +81,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Ver(int id)
+        public Paciente Ver(int id)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
-
+            Paciente result = default(Paciente);
+            IPaciente proxy = new PacienteServices();
             try
             {
                 result = proxy.ReadBy(id);

@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Safari.UI.Process
 {
-    public class TipoServicioProcess : ProcessComponent, Process<TipoServicio>
+    public class TipoMovimientoPrecess : ProcessComponent, Process<TipoMovimiento>
     {
-        public TipoServicio Agregar(TipoServicio objeto)
+        public TipoMovimiento Agregar(TipoMovimiento objeto)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+            TipoMovimiento result = default(TipoMovimiento);
+            ITipoMovimiento proxy = new TipoMovimientoServices();
 
             try
             {
@@ -29,10 +29,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Editar(int id, TipoServicio objeto)
+        public TipoMovimiento Editar(int id, TipoMovimiento objeto)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+            TipoMovimiento result = default(TipoMovimiento);
+            ITipoMovimiento proxy = new TipoMovimientoServices();
 
             try
             {
@@ -47,11 +47,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Eliminar(int id)
+        public TipoMovimiento Eliminar(int id)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
-
+            TipoMovimiento result = default(TipoMovimiento);
+            ITipoMovimiento proxy = new TipoMovimientoServices();
             try
             {
                 proxy.Delete(id);
@@ -64,11 +63,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public List<TipoServicio> ListarTodos()
+        public List<TipoMovimiento> ListarTodos()
         {
-            List<TipoServicio> result = default(List<TipoServicio>);
-            ITipoServicio proxy = new TipoServicioServices();
-
+            List<TipoMovimiento> result = default(List<TipoMovimiento>);
+            ITipoMovimiento proxy = new TipoMovimientoServices();
 
             try
             {
@@ -81,11 +79,11 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Ver(int id)
+        public TipoMovimiento Ver(int id)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
 
+            TipoMovimiento result = default(TipoMovimiento);
+            ITipoMovimiento proxy = new TipoMovimientoServices();
             try
             {
                 result = proxy.ReadBy(id);

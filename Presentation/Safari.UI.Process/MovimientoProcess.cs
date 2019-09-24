@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Safari.UI.Process
 {
-    public class TipoServicioProcess : ProcessComponent, Process<TipoServicio>
+    public class MovimientoProcess : ProcessComponent, Process<Movimiento>
     {
-        public TipoServicio Agregar(TipoServicio objeto)
+        public Movimiento Agregar(Movimiento objeto)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+            Movimiento result = default(Movimiento);
+            IMovimiento proxy = new MovimientoServices();
 
             try
             {
@@ -29,10 +29,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Editar(int id, TipoServicio objeto)
+        public Movimiento Editar(int id, Movimiento objeto)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+            Movimiento result = default(Movimiento);
+            IMovimiento proxy = new MovimientoServices();
 
             try
             {
@@ -47,10 +47,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Eliminar(int id)
+        public Movimiento Eliminar(int id)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+            Movimiento result = default(Movimiento);
+            IMovimiento proxy = new MovimientoServices();
 
             try
             {
@@ -64,10 +64,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public List<TipoServicio> ListarTodos()
+        public List<Movimiento> ListarTodos()
         {
-            List<TipoServicio> result = default(List<TipoServicio>);
-            ITipoServicio proxy = new TipoServicioServices();
+            List<Movimiento> result = default(List<Movimiento>);
+            IMovimiento proxy = new MovimientoServices();
 
 
             try
@@ -81,10 +81,10 @@ namespace Safari.UI.Process
             return result;
         }
 
-        public TipoServicio Ver(int id)
+        public Movimiento Ver(int id)
         {
-            TipoServicio result = default(TipoServicio);
-            ITipoServicio proxy = new TipoServicioServices();
+            Movimiento result = default(Movimiento);
+            IMovimiento proxy = new MovimientoServices();
 
             try
             {

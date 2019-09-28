@@ -12,7 +12,7 @@ namespace Safari.UI.Process
 {
     public class PacienteProcess : ProcessComponent, Process<Paciente>
     {
-    {
+    
 public Paciente Agregar(Paciente objeto)
         {
 

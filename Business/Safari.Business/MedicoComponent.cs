@@ -13,6 +13,7 @@ namespace Safari.Business
         public override Medico Create(Medico objeto)
         {
             Medico result = default(Medico);
+         
             var MedicoDAC = new MedicoDAC();
 
             result = MedicoDAC.Create(objeto);

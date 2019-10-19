@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Safari.Data
 {
@@ -14,23 +16,35 @@ namespace Safari.Data
     {
         public Medico Create(Medico entity)
         {
-            const string SQL_STATEMENT = "insert into Medico(TipoMatricula,NumeroMatricula,Apellido,Nombre,Especialidad,FechaNacimiento,Email,Telefono)values(@TipoMatricula,@NumeroMatricula,@Apellido,@Nombre,@Especialidad,@FechaNacimiento,@Email,@Telefono)";
-
-            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
-            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            try
             {
-                db.AddInParameter(cmd, "@Nombre", DbType.AnsiString, entity.Nombre);
-                db.AddInParameter(cmd, "@TipoMatricula", DbType.AnsiString, entity.TipoMatricula);
-                db.AddInParameter(cmd, "@Apellido", DbType.Int64, entity.Apellido);
-                db.AddInParameter(cmd, "@NumeroMatricula", DbType.AnsiString, entity.NumeroMatricula);
-                db.AddInParameter(cmd, "@Email", DbType.AnsiString, entity.Email);
-                db.AddInParameter(cmd, "@Telefono", DbType.AnsiString, entity.Telefono);
-                db.AddInParameter(cmd, "@Especialidad", DbType.AnsiString, entity.Especialidad);
-                db.AddInParameter(cmd, "@FechaNAcimiento", DbType.Date, entity.FechaNacimiento);
-                db.AddInParameter(cmd, "@Domicilio", DbType.AnsiString, entity.Nombre);
+                const string SQL_STATEMENT = "insert into Medico(TipoMatricula,NumeroMatricula,Apellido,Nombre,Especialidad,FechaNacimiento,Email,Telefono)values(@TipoMatricula,@NumeroMatricula,@Apellido,@Nombre,@Especialidad,@FechaNacimiento,@Email,@Telefono)";
 
+                var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+                using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+                {
+                    db.AddInParameter(cmd, "@Nombre", DbType.AnsiString, entity.Nombre);
+                    db.AddInParameter(cmd, "@TipoMatricula", DbType.AnsiString, entity.TipoMatricula);
+                    db.AddInParameter(cmd, "@Apellido", DbType.AnsiString, entity.Apellido);
+                    db.AddInParameter(cmd, "@NumeroMatricula", DbType.Int32, entity.NumeroMatricula);
+                    db.AddInParameter(cmd, "@Email", DbType.AnsiString, entity.Email);
+                    db.AddInParameter(cmd, "@Telefono", DbType.AnsiString, entity.Telefono);
+                    db.AddInParameter(cmd, "@Especialidad", DbType.AnsiString, entity.Especialidad);
+                    db.AddInParameter(cmd, "@FechaNAcimiento", DbType.Date, entity.FechaNacimiento);
+
+                    db.ExecuteNonQuery(cmd);
+                    return entity;
+
+                }
             }
-            return entity;
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                return entity;
+            }
+           
+           
         }
 
         public void Delete(int id)
@@ -100,7 +114,7 @@ namespace Safari.Data
                 db.AddInParameter(cmd, "@Telefono", DbType.AnsiString, entity.Telefono);
                 db.AddInParameter(cmd, "@Especialidad", DbType.AnsiString, entity.Especialidad);
                 db.AddInParameter(cmd, "@FechaNAcimiento", DbType.Date, entity.FechaNacimiento);
-                db.AddInParameter(cmd, "@Domicilio", DbType.AnsiString, entity.Nombre);
+            
 
                 db.ExecuteNonQuery(cmd);
             }

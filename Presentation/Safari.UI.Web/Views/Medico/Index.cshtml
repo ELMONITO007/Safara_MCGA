@@ -8,7 +8,7 @@
 
 
 <p>
-    @Html.ActionLink("Crear un medico   ", "Crear_Medico")
+    @Html.ActionLink("Crear un medico   ", "Create")
 </p>
 <table class="table">
     <tr>
@@ -66,9 +66,9 @@
             @Html.DisplayFor(modelItem => item.FechaNacimiento)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Editar_Medico", new { id=item.Id }) |
-            @Html.ActionLink("Detalles", "Detalle_Medico", new { id=item.Id }) |
-            @Html.ActionLink("Eliminar", "Eliminar_Medico", new { id=item.Id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

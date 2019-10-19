@@ -4097,6 +4097,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-bottom-color: #4e5d6c;
   }
 }
+#nav ul {
+    display: none;
+}
+
+#nav li:hover > ul {
+    display: block;
+}
 .tab-content > .tab-pane {
   display: none;
 }

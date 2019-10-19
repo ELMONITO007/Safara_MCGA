@@ -43,9 +43,20 @@ namespace Safari.UI.Web.Controllers
             {
                 MedicoProcess ep = new MedicoProcess();
                 Medico medico = new Medico();
+                
                 medico.Nombre = collection.Get("Nombre");
+                medico.Apellido = collection.Get("Apellido");
+                medico.Email = collection.Get("Email");
+                medico.Especialidad = collection.Get("Especialidad");
+                medico.FechaNacimiento =DateTime.Parse( collection.Get("FechaNacimiento"));
+                medico.NumeroMatricula=int.Parse(collection.Get("NumeroMatricula"));
+                medico.Telefono=collection.Get("Telefono");
+                medico.TipoMatricula= collection.Get("TipoMatricula");
+
+
+
                 ep.Agregar(medico);
-                return RedirectToAction("Medico");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -72,8 +83,15 @@ namespace Safari.UI.Web.Controllers
                 Medico medico = new Medico();
                 medico.Id = Convert.ToInt32(collection.Get("Id"));
                 medico.Nombre = collection.Get("Nombre");
+                medico.Apellido = collection.Get("Apellido");
+                medico.Email = collection.Get("Email");
+                medico.Especialidad = collection.Get("Especialidad");
+                medico.FechaNacimiento = DateTime.Parse(collection.Get("FechaNacimiento"));
+                medico.NumeroMatricula = int.Parse(collection.Get("NumeroMatricula"));
+                medico.Telefono = collection.Get("Telefono");
+                medico.TipoMatricula = collection.Get("TipoMatricula");
                 ep.Editar(id, medico);
-                return RedirectToAction("Medico");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -98,7 +116,8 @@ namespace Safari.UI.Web.Controllers
             {
                 MedicoProcess ep = new MedicoProcess();
                 ep.Eliminar(id);
-                return RedirectToAction("Medico");
+                return RedirectToAction("Index");
+              
             }
             catch
             {

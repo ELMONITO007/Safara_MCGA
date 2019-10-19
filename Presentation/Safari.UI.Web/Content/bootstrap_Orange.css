@@ -53,6 +53,13 @@ template {
 a {
   background-color: transparent;
 }
+#nav ul {
+    display: none;
+}
+
+#nav li:hover > ul {
+    display: block;
+}
 a:active,
 a:hover {
   outline: 0;

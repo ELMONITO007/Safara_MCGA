@@ -1,12 +1,13 @@
 ﻿@model Safari.Entities.Medico
 
 @{
-    ViewBag.Title = "Detalles";
+    ViewBag.Title = "Eliminar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detalles</h2>
+<h2>Eliminar</h2>
 
+<h3>¿Esta seguro de eliminar?</h3>
 <div>
     <h4>Medico</h4>
     <hr />
@@ -76,8 +77,13 @@
         </dd>
 
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Volver a la lista", "index")
-</p>

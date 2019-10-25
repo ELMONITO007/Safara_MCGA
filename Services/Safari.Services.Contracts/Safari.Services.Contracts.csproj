@@ -51,6 +51,7 @@
     <Compile Include="ISala.cs" />
     <Compile Include="ITipoMovimiento.cs" />
     <Compile Include="ITipoServicio.cs" />
+    <Compile Include="ListarTodosEspecieResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

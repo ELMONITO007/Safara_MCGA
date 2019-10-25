@@ -1,6 +1,7 @@
 ﻿using Safari.Entities;
 using Safari.Services;
 using Safari.Services.Contracts;
+using Safari.Services.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,13 @@ namespace Safari.UI.Process
 {
  public   class EspeciesProcess : ProcessComponent
     {
+
+        
         public List<Especie> ListarTodos()
         {
             List<Especie> result = default(List<Especie>);
             Iespecie proxy = new EspecieServices();
+            EspecieServiceHttp a = new EspecieServiceHttp();
 
             try
             {

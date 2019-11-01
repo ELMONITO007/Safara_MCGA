@@ -15,7 +15,8 @@ namespace Safari.UI.Web.Controllers
         public ActionResult Index()
         {
             EspeciesProcess ep = new EspeciesProcess();
-            return View(ep.ListarTodos());
+            var lista = ep.ToList();
+            return View(lista);
         }
 
         // GET: Especie/Details/5

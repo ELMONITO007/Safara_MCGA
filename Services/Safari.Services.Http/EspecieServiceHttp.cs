@@ -15,8 +15,8 @@ namespace Safari.Services.Http
     public  class EspecieServiceHttp :ApiController
     {
         [HttpGet]
-        [Route("Listar Todos")]
-        public ListarTodosEspecieResponse read()
+        [Route("ListarTodos")]
+        public ListarTodosEspecieResponse ListarTodos()
         {
 
 
@@ -36,8 +36,8 @@ namespace Safari.Services.Http
                     StatusCode = (HttpStatusCode)422,
                     ReasonPhrase = ex.Message
                 };
-                //throw new HttpResponseException
-                return null;
+                throw new HttpResponseException(httpError);
+                
             }
         }
     }

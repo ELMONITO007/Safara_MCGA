@@ -15,6 +15,13 @@ namespace Safari.UI.Process
     {
 
         
+        public IList<Especie> ToList()
+        {
+            var response = HttpGet<ListarTodosEspecieResponse>("api/Especie/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
+            return response.result;
+        }
+
+
         public List<Especie> ListarTodos()
         {
             List<Especie> result = default(List<Especie>);

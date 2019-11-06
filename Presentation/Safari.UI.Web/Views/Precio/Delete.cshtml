@@ -1,0 +1,49 @@
+﻿@model Safari.Entities.Precio
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar</h2>
+
+<h3>Esta seguro de eliminar?</h3>
+<div>
+    <h4>Precio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaDesde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaDesde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaHasta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaHasta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

@@ -7,10 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Safari.Services.Contracts
-{[DataContract]
-  public partial  class ListarTodosEspecieResponse
+{
+    [DataContract]
+    public partial class EspecieResponse
     {
         [DataMember]
-        public List<Especie> result { get; set; }
+        public List<Entities.Especie> obtenerTodos { get; set; }
+        public Especie obtenerUno { get; set; }
+        public Especie agregar { get; set; }
     }
 }

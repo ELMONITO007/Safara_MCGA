@@ -1,0 +1,43 @@
+﻿@model Safari.Entities.Precio
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Precio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaDesde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaDesde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaHasta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaHasta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

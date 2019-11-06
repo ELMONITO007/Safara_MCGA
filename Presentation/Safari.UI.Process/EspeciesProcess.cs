@@ -17,96 +17,103 @@ namespace Safari.UI.Process
         
         public IList<Especie> ToList()
         {
-            var response = HttpGet<ListarTodosEspecieResponse>("api/Especie/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
-            return response.result;
+            var response = HttpGet<EspecieResponse>("api/Especie/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
+            return response.obtenerTodos;
         }
 
-
-        public List<Especie> ListarTodos()
+        public Especie Agregar(EspecieResponse especie)
         {
-            List<Especie> result = default(List<Especie>);
-            Iespecie proxy = new EspecieServices();
-            EspecieServiceHttp a = new EspecieServiceHttp();
+            var response = HttpGet<EspecieResponse>("api/Especie/Agregar", new Dictionary<string, object>(), MediaType.Json);
+            return response.agregar;
 
-            try
-            {
-                result = proxy.Read();
-            }
-            catch (FaultException fex)
-            {
-                throw new ApplicationException(fex.Message);
-            }
-            return result;
         }
 
-        public Especie Agregar(Especie especie)
-        {
-            Especie result = default(Especie);
-            Iespecie proxy = new EspecieServices();
 
-            try
-            {
-                result = proxy.Create(especie);
-            }
-            catch (FaultException fex)
-            {
-                throw new ApplicationException(fex.Message);
-            }
+        //public List<Especie> ListarTodos()
+        //{
+        //    List<Especie> result = default(List<Especie>);
+        //    Iespecie proxy = new EspecieServices();
+        //    EspecieServiceHttp a = new EspecieServiceHttp();
 
-            return result;
-        }
+        //    try
+        //    {
+        //        result = proxy.Read();
+        //    }
+        //    catch (FaultException fex)
+        //    {
+        //        throw new ApplicationException(fex.Message);
+        //    }
+        //    return result;
+        //}
 
-        public Especie Ver(int id)
-        {
-            Especie result = default(Especie);
-            Iespecie proxy = new EspecieServices();
+        //public Especie Agregar(Especie especie)
+        //{
+        //    Especie result = default(Especie);
+        //    Iespecie proxy = new EspecieServices();
 
-            try
-            {
-                result = proxy.ReadBy(id);
-            }
-            catch (FaultException fex)
-            {
-                throw new ApplicationException(fex.Message);
-            }
+        //    try
+        //    {
+        //        result = proxy.Create(especie);
+        //    }
+        //    catch (FaultException fex)
+        //    {
+        //        throw new ApplicationException(fex.Message);
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
-        public Especie Eliminar(int id)
-        {
-            Especie result = default(Especie);
-            Iespecie proxy = new EspecieServices();
+        //public Especie Ver(int id)
+        //{
+        //    Especie result = default(Especie);
+        //    Iespecie proxy = new EspecieServices();
 
-            try
-            {
-                proxy.Delete(id);
-            }
-            catch (FaultException fex)
-            {
-                throw new ApplicationException(fex.Message);
-            }
+        //    try
+        //    {
+        //        result = proxy.ReadBy(id);
+        //    }
+        //    catch (FaultException fex)
+        //    {
+        //        throw new ApplicationException(fex.Message);
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
-        public Especie Editar(int id, Especie especie)
-        {
-            Especie result = default(Especie);
-            Iespecie proxy = new EspecieServices();
+        //public Especie Eliminar(int id)
+        //{
+        //    Especie result = default(Especie);
+        //    Iespecie proxy = new EspecieServices();
 
-            try
-            {
-                proxy.Update( especie);
-                result = proxy.ReadBy(id);
-            }
-            catch (FaultException fex)
-            {
-                throw new ApplicationException(fex.Message);
-            }
+        //    try
+        //    {
+        //        proxy.Delete(id);
+        //    }
+        //    catch (FaultException fex)
+        //    {
+        //        throw new ApplicationException(fex.Message);
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
+
+        //public Especie Editar(int id, Especie especie)
+        //{
+        //    Especie result = default(Especie);
+        //    Iespecie proxy = new EspecieServices();
+
+        //    try
+        //    {
+        //        proxy.Update( especie);
+        //        result = proxy.ReadBy(id);
+        //    }
+        //    catch (FaultException fex)
+        //    {
+        //        throw new ApplicationException(fex.Message);
+        //    }
+
+        //    return result;
+        //}
 
     }
 }

@@ -25,7 +25,7 @@ namespace Safari.Data
                 db.AddInParameter(cmd, "@FechaDesde", DbType.DateTime, entity.fechaDesde);
                 db.AddInParameter(cmd, "@FechaHasta", DbType.DateTime, entity.fechaHasta);
                 db.AddInParameter(cmd, "@Valor", DbType.Int32, entity.valor);
-                entity.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
+                db.ExecuteScalar(cmd);
             }
             return entity;
         }

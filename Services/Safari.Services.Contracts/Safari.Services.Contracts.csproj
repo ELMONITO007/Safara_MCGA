@@ -48,6 +48,8 @@
     <Compile Include="Request\AgregarMovimientoRequest.cs" />
     <Compile Include="Request\EspecieRequest.cs" />
     <Compile Include="Request\PrecioRequest.cs" />
+    <Compile Include="Request\TipoMovimientoRequest.cs" />
+    <Compile Include="TipoMovimientoResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\Safari.Entities\Safari.Entities.csproj">

@@ -22,7 +22,7 @@ namespace Safari.Data
             {
                 db.AddInParameter(cmd, "@Nombre", DbType.AnsiString, entity.Nombre);
                 db.AddInParameter(cmd, "@Multiplador", DbType.Int16, entity.Multiplador);
-                             
+                db.ExecuteNonQuery(cmd);
 
             }
             return entity;
@@ -61,7 +61,7 @@ namespace Safari.Data
 
         public TipoMovimiento ReadBy(int id)
         {
-            const string SQL_STATEMENT = "SELECT * FROM TipoMoviminto WHERE [Id]=@Id ";
+            const string SQL_STATEMENT = "SELECT * FROM TipoMovimiento WHERE [Id]=@Id ";
             TipoMovimiento tipoMovimiento = null;
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -81,14 +81,14 @@ namespace Safari.Data
 
         public void Update(TipoMovimiento entity)
         {
-            const string SQL_STATEMENT = "UPDATE TipoMovimiento SET [Nombre]= @Nombre , Multiplador=@Multiplador WHERE [Id]= @Id ";
+            const string SQL_STATEMENT = "UPDATE TipoMovimiento SET [Nombre]= @Nombre , Multiplicador=@Multiplicador WHERE [Id]= @Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Nombre", DbType.AnsiString, entity.Nombre);
                 db.AddInParameter(cmd, "@Id", DbType.Int32, entity.Id);
-                db.AddInParameter(cmd, "@Multiplador", DbType.Int16, entity.Multiplador);
+                db.AddInParameter(cmd, "@Multiplicador", DbType.Int16, entity.Multiplador);
                 db.ExecuteNonQuery(cmd);
             }
         }
@@ -98,7 +98,7 @@ namespace Safari.Data
             TipoMovimiento tipoMovimiento = new TipoMovimiento();
             tipoMovimiento.Id = GetDataValue<int>(dr, "Id");
             tipoMovimiento.Nombre = GetDataValue<string>(dr, "Nombre");
-            tipoMovimiento.Multiplador = GetDataValue<int>(dr, "Multiplador");
+            tipoMovimiento.Multiplador = GetDataValue<int>(dr, "Multiplicador");
             return tipoMovimiento;
         }
     }

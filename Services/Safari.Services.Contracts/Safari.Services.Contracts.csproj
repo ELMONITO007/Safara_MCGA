@@ -48,7 +48,9 @@
     <Compile Include="Request\AgregarMovimientoRequest.cs" />
     <Compile Include="Request\EspecieRequest.cs" />
     <Compile Include="Request\PrecioRequest.cs" />
+    <Compile Include="Request\TipoDeServicioRequest.cs" />
     <Compile Include="Request\TipoMovimientoRequest.cs" />
+    <Compile Include="TipoDeServicioReponse.cs" />
     <Compile Include="TipoMovimientoResponse.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,17 +13,17 @@ using System.Web.Http;
 namespace Safari.Services.Http
 {
     [RoutePrefix("api/TipoServicio")]
-    public class TipoServicioServiceHTTP : ApiController, IServiceHttp<TipoMovimientoResponse, TipoMovimientoRequest>
+    public class TipoServicioHttp : ApiController, IServiceHttp<TipoDeServicioReponse, TipoDeServicioRequest>
     {
         [HttpPost]
         [Route("Actualizar")]
-        public void Actualizar(TipoMovimientoRequest agregarRequest)
+        public void Actualizar(TipoDeServicioRequest agregarRequest)
         {
             try
             {
 
-                var bc = new TipoMovimientoComponent();
-                bc.Update(agregarRequest.tipoMovimiento);
+                var bc = new TipoServicioComponent();
+                bc.Update(agregarRequest.tipoServicio);
 
             }
             catch (Exception ex)
@@ -37,16 +37,15 @@ namespace Safari.Services.Http
             }
         }
 
-
         [HttpPost]
         [Route("Agregar")]
-        public void Crear(TipoMovimientoRequest agregarRequest)
+        public void Crear(TipoDeServicioRequest agregarRequest)
         {
             try
             {
-                
-                var bc = new TipoMovimientoComponent();
-                bc.Create(agregarRequest.tipoMovimiento);
+
+                var bc = new TipoServicioComponent();
+                bc.Create(agregarRequest.tipoServicio);
 
             }
             catch (Exception ex)
@@ -64,11 +63,10 @@ namespace Safari.Services.Http
         [Route("Eliminar")]
         public void Eliminar(int id)
         {
-
             try
             {
 
-                var bc = new TipoMovimientoComponent();
+                var bc = new TipoServicioComponent();
                 bc.Delete(id);
 
 
@@ -88,12 +86,13 @@ namespace Safari.Services.Http
 
         [HttpGet]
         [Route("ListarTodos")]
-        public TipoMovimientoResponse ListarTodos()
+
+        public TipoDeServicioReponse ListarTodos()
         {
             try
             {
-                var response = new TipoMovimientoResponse();
-                var bc = new TipoMovimientoComponent();
+                var response = new TipoDeServicioReponse();
+                var bc = new TipoServicioComponent();
                 response.obtenerTodos = bc.Read();
                 return response;
 
@@ -111,16 +110,18 @@ namespace Safari.Services.Http
             }
         }
 
+
         [HttpGet]
         [Route("ObtenerUno")]
-        public TipoMovimientoResponse ObtenerUno(int id)
+        public TipoDeServicioReponse ObtenerUno(int id)
         {
             try
             {
-                var response = new TipoMovimientoResponse();
-                var bc = new TipoMovimientoComponent();
+                var response = new TipoDeServicioReponse();
+                var bc = new TipoServicioComponent();
                 response.obtenerUno = bc.ReadBy(id);
                 return response;
+
             }
             catch (Exception ex)
             {

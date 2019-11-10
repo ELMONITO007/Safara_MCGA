@@ -27,7 +27,7 @@ namespace Safari.Data
                 db.AddInParameter(cmd, "@Url", DbType.AnsiString, entity.Url);
                 db.AddInParameter(cmd, "@FechaNAcimiento", DbType.Date, entity.FechaNacimiento);
                 db.AddInParameter(cmd, "@Domicilio", DbType.AnsiString, entity.Nombre);
-
+                db.ExecuteNonQuery(cmd);
             }
             return entity;
         }
@@ -99,7 +99,7 @@ namespace Safari.Data
                 db.AddInParameter(cmd, "@Url", DbType.AnsiString, entity.Url);
                 db.AddInParameter(cmd, "@FechaNAcimiento", DbType.Date, entity.FechaNacimiento);
                 db.AddInParameter(cmd, "@Domicilio", DbType.AnsiString, entity.Nombre);
-                db.AddInParameter(cmd, "@Id", DbType.Int32, entity.Id);
+               
 
                 db.ExecuteNonQuery(cmd);
             }

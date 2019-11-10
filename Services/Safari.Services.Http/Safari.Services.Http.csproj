@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteServiceHTTP.cs" />
     <Compile Include="EspecieServiceHttp.cs" />
     <Compile Include="MedicoServiceHTTP.cs" />
     <Compile Include="MovimientoServiceHTTP.cs" />

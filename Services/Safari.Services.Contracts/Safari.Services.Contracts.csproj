@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteResponse.cs" />
     <Compile Include="MedicoResponse.cs" />
     <Compile Include="PacienteResponse.cs" />
+    <Compile Include="Request\ClienteRequest.cs" />
     <Compile Include="Request\MedicoRequest.cs" />
     <Compile Include="Request\PacienteRequest.cs" />
     <Compile Include="Request\SalaRequest.cs" />

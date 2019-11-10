@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Safari.Entities.Precio>
+﻿@model IEnumerable<Safari.Entities.Movimiento>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -6,16 +6,16 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoMovimiento)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.valor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipoServicioID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaDesde)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaHasta)
         </th>
         <th></th>
     </tr>
@@ -23,16 +23,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoMovimiento)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipoServicioID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaDesde)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaHasta)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |

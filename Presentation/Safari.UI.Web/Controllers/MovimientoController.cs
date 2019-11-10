@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Safari.Entities;
+using Safari.UI.Process;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 namespace Safari.UI.Web.Controllers
 {
     [Authorize]
@@ -13,8 +14,9 @@ namespace Safari.UI.Web.Controllers
         // GET: Movimiento
         public ActionResult Index()
         {
-            int id;
-            return View(id);
+            MovimientoProcess ep = new MovimientoProcess();
+            var lista = ep.ToList();
+            return View(lista);
         }
         [Route("Detalle_Movimiento", Name = "MovimientoControllerRouteDetails")]
         // GET: Movimiento/Details/5

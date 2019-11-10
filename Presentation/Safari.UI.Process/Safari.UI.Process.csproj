@@ -58,20 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CitaProcess.cs" />
-    <Compile Include="ClienteProcess.cs" />
     <Compile Include="EspeciesProcess.cs" />
     <Compile Include="MediaType.cs" />
-    <Compile Include="MedicoProcess.cs" />
     <Compile Include="MovimientoProcess.cs" />
-    <Compile Include="PacienteProcess.cs" />
     <Compile Include="PrecioProcess.cs" />
     <Compile Include="Process.cs" />
     <Compile Include="ProcessComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SalaProcess.cs" />
-    <Compile Include="TipoMovimientoPrecess.cs" />
-    <Compile Include="TipoServicioProcess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Services\Safari.Services.Contracts\Safari.Services.Contracts.csproj">

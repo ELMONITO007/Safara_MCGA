@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace Safari.Services.Contracts.Request
 {
     [DataContract]
-    public class EspecieRequest
+    public class AgregarMovimientoRequest
     {
         [DataMember]
-        public Especie Especie { get; set; }
+        public Movimiento movimiento { get; set; }
     }
 }

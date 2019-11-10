@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Safari.Entities;
+using Safari.UI.Process;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Safari.Entities;
-using Safari.UI.Process;
 
 
 namespace Safari.UI.Web.Controllers
@@ -13,11 +13,13 @@ namespace Safari.UI.Web.Controllers
     public class PrecioController : Controller
     {
         
-           [Route("Precio", Name = "PrecioControllerRouteIndex")]
-        // GET: Precio
+      [Route("Precio", Name = "PrecioControllerRouteIndex")]
         public ActionResult Index()
         {
-            return View();
+            PrecioProcess ep = new PrecioProcess();
+            
+            var lista = ep.ToList();
+            return View(lista);
         }
 
         [Route("Detalle_Precio", Name = "PrecioControllerRouteDetails")]
@@ -83,7 +85,7 @@ namespace Safari.UI.Web.Controllers
         [Route("Eliminar_Precio", Name = "PrecioControllerRouteDeletePost")]
         [HttpPost]
         // POST: Precio/Delete/5
-        [HttpPost]
+       
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

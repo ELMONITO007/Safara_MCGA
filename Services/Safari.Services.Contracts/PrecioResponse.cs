@@ -6,12 +6,12 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Safari.Services.Contracts.Request
+namespace Safari.Services.Contracts
 {
     [DataContract]
-    public class EspecieRequest
+   public partial class PrecioResponse
     {
         [DataMember]
-        public Especie Especie { get; set; }
+        public List<Precio> obtenerTodos { get; set; }
     }
 }

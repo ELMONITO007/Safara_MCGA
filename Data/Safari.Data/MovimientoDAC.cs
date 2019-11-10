@@ -14,15 +14,15 @@ namespace Safari.Data
     {
         public Movimiento Create(Movimiento entity)
         {
-            const string SQL_STATEMENT = "insert into Movimiento (Fecha,ClienteId,TipoMovimientoId,Valor)values(@Fecha,@TipoMovientoId,@Valor); SELECT SCOPE_IDENTITY();";
+            const string SQL_STATEMENT = "insert into Movimiento (Fecha,ClienteId,TipoMovimientoId,Valor)values(@Fecha,@ClienteId,@TipoMovientoId,@Valor); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Valor", DbType.Int32, entity.valor);
                 db.AddInParameter(cmd, "@Fecha", DbType.DateTime, entity.Fecha);
-                db.AddInParameter(cmd, "@ClienteId", DbType.Int32, entity.Cliente.Id);
-                db.AddInParameter(cmd, "@TipoMovientoId", DbType.Int32, entity.tipoMovimiento.Id);
+                db.AddInParameter(cmd, "@ClienteId", DbType.Int32, entity.Cliente);
+                db.AddInParameter(cmd, "@TipoMovientoId", DbType.Int32, entity.tipoMovimiento);
 
 
                 entity.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
@@ -90,21 +90,23 @@ namespace Safari.Data
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Id", DbType.Int32, entity.Id);
-                db.AddInParameter(cmd, "@Valor", DbType.Int32, entity.valor);
+                
                 db.AddInParameter(cmd, "@Fecha", DbType.DateTime, entity.Fecha);
-                db.AddInParameter(cmd, "@ClienteId", DbType.Int32, entity.Cliente.Id);
-                db.AddInParameter(cmd, "@TipoMovientoId", DbType.Int32, entity.tipoMovimiento.Id);
+                db.AddInParameter(cmd, "@ClienteId", DbType.Int32, entity.Cliente);
+                db.AddInParameter(cmd, "@TipoMovimientoId", DbType.Int32, entity.tipoMovimiento);
+                db.AddInParameter(cmd, "@Valor", DbType.Int32, entity.valor);
                 db.ExecuteNonQuery(cmd);
             }
         }
         private Movimiento LoadMovimiento(IDataReader dr)
         {
             Movimiento movimiento = new Movimiento();
-            movimiento.Id = GetDataValue<int>(dr, "Id");
+          
             movimiento.Fecha = GetDataValue<DateTime>(dr, "Fecha");
-            movimiento.Cliente.Id= GetDataValue<int>(dr, "ClienteId");
-            movimiento.tipoMovimiento.Id = GetDataValue<int>(dr, "TipoMovimientoId");
+            movimiento.Cliente= GetDataValue<int>(dr, "ClienteId");
+            movimiento.tipoMovimiento = GetDataValue<int>(dr, "TipoMovimientoId");
             movimiento.valor = GetDataValue<int>(dr, "Valor");
+            movimiento.Id = GetDataValue<int>(dr, "Id");
             return movimiento;
         }
     }

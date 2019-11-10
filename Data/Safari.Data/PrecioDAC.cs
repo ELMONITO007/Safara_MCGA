@@ -21,7 +21,7 @@ namespace Safari.Data
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
-                db.AddInParameter(cmd, "@TipoServicioId", DbType.Int16, entity.tipoServicio.Id);
+                db.AddInParameter(cmd, "@TipoServicioId", DbType.Int16, entity.tipoServicioID);
                 db.AddInParameter(cmd, "@FechaDesde", DbType.DateTime, entity.fechaDesde);
                 db.AddInParameter(cmd, "@FechaHasta", DbType.DateTime, entity.fechaHasta);
                 db.AddInParameter(cmd, "@Valor", DbType.Int32, entity.valor);
@@ -46,7 +46,7 @@ namespace Safari.Data
 
         public List<Precio> Read()
         {
-            const string SQL_STATEMENT = "SELECT * FROM Precio ";
+            const string SQL_STATEMENT = "SELECT * FROM Precio";
 
             List<Precio> result = new List<Precio>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -92,7 +92,7 @@ namespace Safari.Data
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Id", DbType.Int32, entity.Id);
-                db.AddInParameter(cmd, "@TipoServicioId", DbType.Int16, entity.tipoServicio.Id);
+                db.AddInParameter(cmd, "@TipoServicioId", DbType.Int16, entity.tipoServicioID);
                 db.AddInParameter(cmd, "@FechaDesde", DbType.DateTime, entity.fechaDesde);
                 db.AddInParameter(cmd, "@FechaHasta", DbType.DateTime, entity.fechaHasta);
                 db.AddInParameter(cmd, "@Valor", DbType.Int32, entity.valor);
@@ -103,11 +103,12 @@ namespace Safari.Data
         private Precio LoadPrecio(IDataReader dr)
         {
             Precio precio = new Precio();
-            precio.Id = GetDataValue<int>(dr, "Id");
+           
             precio.fechaDesde = GetDataValue<DateTime>(dr, "FechaDesde");
             precio.fechaHasta = GetDataValue<DateTime>(dr, "FechaHasta");
-            precio.tipoServicio.Id = GetDataValue<int>(dr, "TIpoServicioId");
+            precio.tipoServicioID = GetDataValue<int>(dr, "TIpoServicioId");
             precio.valor = GetDataValue<int>(dr, "Valor");
+           
             return precio;
         }
     }

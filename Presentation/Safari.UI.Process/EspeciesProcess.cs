@@ -11,10 +11,8 @@ using System.Threading.Tasks;
 
 namespace Safari.UI.Process
 {
- public   class EspeciesProcess : ProcessComponent
-    {
-
-        
+    public class EspeciesProcess : ProcessComponent
+    {        
         public IList<Especie> ToList()
         {
             var response = HttpGet<EspecieResponse>("api/Especie/ListarTodos", new Dictionary<string, object>(), MediaType.Json);

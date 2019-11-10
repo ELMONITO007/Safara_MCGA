@@ -1,45 +1,42 @@
 ﻿using Safari.Entities;
 using Safari.Services;
 using Safari.Services.Contracts;
+using Safari.Services.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace Safari.UI.Process
 {
-    public class PrecioProcess : ProcessComponent, Process<Precio>
+    public class PrecioProcess : ProcessComponent
     {
+        public IList<Precio> ToList()
+
+        {
+          
+            var response1 = HttpGet<PrecioResponse>("api/Precio/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
+            return response1.obtenerTodos;
+
+            
+            //return response.obtenerTodos;
+        }
+
+
+
         public Precio Agregar(Precio objeto)
         {
             Precio result = default(Precio);
-            IPrecio proxy = new PrecioServices();
-
-            try
-            {
-                result = proxy.Create(objeto);
-            }
-            catch (FaultException fex)
-            {
-                throw new ApplicationException(fex.Message);
-            }
+            
             return result;
         }
 
         public Precio Editar(int id, Precio objeto)
         {
             Precio result = default(Precio);
-            IPrecio proxy = new PrecioServices();
-            try
-            {
-                proxy.Update(objeto);
-                result = proxy.ReadBy(id);
-            }
-            catch (FaultException fex)
-            {
-                throw new ApplicationException(fex.Message);
-            }
+            
 
             return result;
         }
@@ -47,15 +44,7 @@ namespace Safari.UI.Process
         public Precio Eliminar(int id)
         {
             Precio result = default(Precio);
-            IPrecio proxy = new PrecioServices();
-            try
-            {
-                proxy.Delete(id);
-            }
-            catch (FaultException fex)
-            {
-                throw new ApplicationException(fex.Message);
-            }
+           
 
             return result;
         }
@@ -63,12 +52,12 @@ namespace Safari.UI.Process
         public List<Precio> ListarTodos()
         {
             List<Precio> result = default(List<Precio>);
-            IPrecio proxy = new PrecioServices();
+            
 
 
             try
             {
-                result = proxy.Read();
+               
             }
             catch (FaultException fex)
             {
@@ -80,16 +69,9 @@ namespace Safari.UI.Process
         public Precio Ver(int id)
         {
             Precio result = default(Precio);
-            IPrecio proxy = new PrecioServices();
+          
 
-            try
-            {
-                result = proxy.ReadBy(id);
-            }
-            catch (FaultException fex)
-            {
-                throw new ApplicationException(fex.Message);
-            }
+          
 
             return result;
         }

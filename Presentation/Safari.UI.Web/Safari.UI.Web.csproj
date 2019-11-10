@@ -296,17 +296,17 @@
     <Content Include="Views\TipoMovimiento\Create.cshtml" />
     <Content Include="Views\TipoMovimiento\Edit.cshtml" />
     <Content Include="Views\TipoMovimiento\Delete.cshtml" />
-    <Content Include="Views\Precio\Index.cshtml" />
     <Content Include="Views\Precio\Details.cshtml" />
     <Content Include="Views\Precio\Create.cshtml" />
     <Content Include="Views\Precio\Edit.cshtml" />
     <Content Include="Views\Precio\Delete.cshtml" />
+    <Content Include="Views\Movimiento\Index.cshtml" />
+    <Content Include="Views\Precio\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Home\" />
-    <Folder Include="Views\Movimiento\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -15,16 +15,16 @@ namespace Safari.UI.Web.Controllers
         [Route("Medico", Name = "MedicoControllerRouteIndex")]
         public ActionResult Index()
         {
-            MedicoProcess ep = new MedicoProcess();
-            return View(ep.ListarTodos());
+          
+            return View();
         }
 
         // GET: Medico/Details/5
         [Route("Detalle_Medico", Name = "MedicoControllerRouteDetails")]
         public ActionResult Details(int id)
         {
-            MedicoProcess ep = new MedicoProcess();
-            return View(ep.Ver(id));
+           
+            return View();
         }
 
         // GET: Medico/Create
@@ -41,7 +41,7 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
-                MedicoProcess ep = new MedicoProcess();
+               
                 Medico medico = new Medico();
                 
                 medico.Nombre = collection.Get("Nombre");
@@ -55,7 +55,7 @@ namespace Safari.UI.Web.Controllers
 
 
 
-                ep.Agregar(medico);
+               
                 return RedirectToAction("Index");
             }
             catch
@@ -68,8 +68,8 @@ namespace Safari.UI.Web.Controllers
         [Route("Editar_Medico", Name = "MedicoControllerRouteEditGet")]
         public ActionResult Edit(int id)
         {
-            MedicoProcess ep = new MedicoProcess();
-            return View(ep.Ver(id));
+          
+            return View();
         }
 
         // POST: Medico/Edit/5
@@ -79,7 +79,7 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
-                MedicoProcess ep = new MedicoProcess();
+            
                 Medico medico = new Medico();
                 medico.Id = Convert.ToInt32(collection.Get("Id"));
                 medico.Nombre = collection.Get("Nombre");
@@ -90,7 +90,7 @@ namespace Safari.UI.Web.Controllers
                 medico.NumeroMatricula = int.Parse(collection.Get("NumeroMatricula"));
                 medico.Telefono = collection.Get("Telefono");
                 medico.TipoMatricula = collection.Get("TipoMatricula");
-                ep.Editar(id, medico);
+                
                 return RedirectToAction("Index");
             }
             catch
@@ -103,8 +103,8 @@ namespace Safari.UI.Web.Controllers
         [Route("Eliminar_Medico", Name = "MedicoControllerRouteDeleteGet")]
         public ActionResult Delete(int id)
         {
-            MedicoProcess ep = new MedicoProcess();
-            return View(ep.Ver(id));
+            
+            return View();
         }
 
         // POST: Medico/Delete/5
@@ -114,8 +114,8 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
-                MedicoProcess ep = new MedicoProcess();
-                ep.Eliminar(id);
+               
+             
                 return RedirectToAction("Index");
               
             }

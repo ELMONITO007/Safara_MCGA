@@ -1,31 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using System.Runtime.Serialization;
 namespace Safari.Entities
 {
+    [Serializable]
+    [DataContract]
     public class Movimiento : EntityBase
     {
-
+        [DataMember]
         [DisplayName("Fecha")]
         public DateTime Fecha { get; set; }
 
-
+        [DataMember]
         [DisplayName("Cliente")]
-        public Cliente Cliente { get; set; }
+        public int Cliente { get; set; }
 
-
+        [DataMember]
         [DisplayName("Tipo de Movimiento")]
-        public TipoMovimiento tipoMovimiento { get; set; }
+        public int tipoMovimiento { get; set; }
 
-
+        [DataMember]
         [DisplayName("Valor")]
         public int valor { get; set; }
 
-
+        [DataMember]
         [DisplayName("ID")]
-        public override int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override int Id { get; set; }
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="MovimientoServiceHTTP.cs" />
     <Compile Include="PrecioServiceHTTP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalaServiceHTTP.cs" />
     <Compile Include="ServiceHttp.cs" />
     <Compile Include="TipoServicioHttp.cs" />
     <Compile Include="TipoMovimientoServiceHTTP.cs" />

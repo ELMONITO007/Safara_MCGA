@@ -1,34 +1,28 @@
-﻿using Safari.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
+
 
 namespace Safari.Entities
 {
+    [Serializable]
+    [DataContract]
     public class Sala : EntityBase
     {
+        [DataMember]
         [DisplayName("Id")]
-        public override int Id
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+        public override int Id { get; set; }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        [DataMember]
         [DisplayName("Nombre")]
         [Required]
         public string Nombre { get; set; }
 
+        [DataMember]
         [DisplayName("Tipo de Sala")]
         [Required]
         public string TipoSala

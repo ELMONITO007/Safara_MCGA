@@ -1,4 +1,5 @@
 ﻿using Safari.Business;
+using Safari.Business;
 using Safari.Services.Contracts;
 using Safari.Services.Contracts.Request;
 using System;
@@ -10,20 +11,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 
+
 namespace Safari.Services.Http
 {
-    [RoutePrefix("api/Paciente")]
-    public class PacienteServiceHTTP : ApiController, IServiceHttp<PacienteResponse,PacienteRequest>
+    [RoutePrefix("api/Medico")]
+    public class MedicoServiceHTTP : ApiController, IServiceHttp<MedicoResponse, MedicoRequest>
     {
         [HttpPost]
         [Route("Actualizar")]
-        public void Actualizar(PacienteRequest agregarRequest)
+        public void Actualizar(MedicoRequest agregarRequest)
         {
             try
             {
 
-                var bc = new PacienteComponent();
-                bc.Update(agregarRequest.paciente);
+                var bc = new MedicoComponent();
+                bc.Update(agregarRequest.medico);
 
             }
             catch (Exception ex)
@@ -37,16 +39,16 @@ namespace Safari.Services.Http
             }
         }
 
+
         [HttpPost]
         [Route("Agregar")]
-        public void Crear(PacienteRequest agregarRequest)
+        public void Crear(MedicoRequest agregarRequest)
         {
-
             try
             {
 
-                var bc = new PacienteComponent();
-                bc.Create(agregarRequest.paciente);
+                var bc = new MedicoComponent();
+                bc.Create(agregarRequest.medico);
 
             }
             catch (Exception ex)
@@ -67,7 +69,7 @@ namespace Safari.Services.Http
             try
             {
 
-                var bc = new PacienteComponent();
+                var bc = new MedicoComponent();
                 bc.Delete(id);
 
 
@@ -87,12 +89,12 @@ namespace Safari.Services.Http
 
         [HttpGet]
         [Route("ListarTodos")]
-        public PacienteResponse ListarTodos()
+        public MedicoResponse ListarTodos()
         {
             try
             {
-                var response = new PacienteResponse();
-                var bc = new PacienteComponent();
+                var response = new MedicoResponse();
+                var bc = new MedicoComponent();
                 response.obtenerTodos = bc.Read();
                 return response;
 
@@ -112,12 +114,12 @@ namespace Safari.Services.Http
 
         [HttpGet]
         [Route("ObtenerUno")]
-        public PacienteResponse ObtenerUno(int id)
+        public MedicoResponse ObtenerUno(int id)
         {
             try
             {
-                var response = new Contracts.PacienteResponse();
-                var bc = new PacienteComponent();
+                var response = new Contracts.MedicoResponse();
+                var bc = new MedicoComponent();
                 response.obtenerUno = bc.ReadBy(id);
                 return response;
 
@@ -134,9 +136,5 @@ namespace Safari.Services.Http
 
             }
         }
-
-        
-
-       
     }
 }

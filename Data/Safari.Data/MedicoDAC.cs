@@ -101,14 +101,14 @@ namespace Safari.Data
 
         public void Update(Medico entity)
         {
-            const string SQL_STATEMENT = "update Cliente set Nombre = @Nombre, Apellido = @Apellido, Email = @Email, Telefono = @Telefono, TipoMatricula =@TipoMatricula, FechaNacimiento = @FechaNacimiento, Domicilio = @Domicilio, Especialidad = @Especialidad,NumeroMatricula = @NumeroMatricula where id = @Id";
+            const string SQL_STATEMENT = "update Medico set Nombre = @Nombre, Apellido = @Apellido, Email = @Email, Telefono = @Telefono, TipoMatricula =@TipoMatricula, FechaNacimiento = @FechaNacimiento,  Especialidad = @Especialidad,NumeroMatricula = @NumeroMatricula where id = @Id";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Id", DbType.Int32, entity.Id);
                 db.AddInParameter(cmd, "@Nombre", DbType.AnsiString, entity.Nombre);
                 db.AddInParameter(cmd, "@TipoMatricula", DbType.AnsiString, entity.TipoMatricula);
-                db.AddInParameter(cmd, "@Apellido", DbType.Int64, entity.Apellido);
+                db.AddInParameter(cmd, "@Apellido", DbType.AnsiString, entity.Apellido);
                 db.AddInParameter(cmd, "@NumeroMatricula", DbType.AnsiString, entity.NumeroMatricula);
                 db.AddInParameter(cmd, "@Email", DbType.AnsiString, entity.Email);
                 db.AddInParameter(cmd, "@Telefono", DbType.AnsiString, entity.Telefono);

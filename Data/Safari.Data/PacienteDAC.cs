@@ -20,9 +20,9 @@ namespace Safari.Data
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Nombre", DbType.AnsiString, paciente.nombre);
-                db.AddInParameter(cmd, "@ClienteId", DbType.Int32, paciente.cliente.Id);
+                db.AddInParameter(cmd, "@ClienteId", DbType.Int32, paciente.cliente);
                 db.AddInParameter(cmd, "@FechaNacimiento", DbType.DateTime, paciente.fechaNacimiento);
-                db.AddInParameter(cmd, "@EspecieId", DbType.Int32, paciente.Especie.Id);
+                db.AddInParameter(cmd, "@EspecieId", DbType.Int32, paciente.Especie);
                 db.AddInParameter(cmd, "@Observacion", DbType.AnsiString, paciente.observacion);
                 paciente.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -99,9 +99,9 @@ namespace Safari.Data
             {
                 
                 db.AddInParameter(cmd, "@Nombre", DbType.AnsiString, paciente.nombre);
-                db.AddInParameter(cmd, "@ClienteId", DbType.Int32, paciente.cliente.Id);
+                db.AddInParameter(cmd, "@ClienteId", DbType.Int32, paciente.cliente);
                 db.AddInParameter(cmd, "@FechaNacimiento", DbType.DateTime, paciente.fechaNacimiento);
-                db.AddInParameter(cmd, "@EspecieId", DbType.Int32, paciente.Especie.Id);
+                db.AddInParameter(cmd, "@EspecieId", DbType.Int32, paciente.Especie);
                 db.AddInParameter(cmd, "@Observacion", DbType.AnsiString, paciente.observacion);
                 db.AddInParameter(cmd, "@Id", DbType.Int32, paciente.Id);
                 db.ExecuteNonQuery(cmd);
@@ -124,8 +124,8 @@ namespace Safari.Data
             Paciente paciente = new Paciente();
             paciente.Id = GetDataValue<int>(dr, "Id");
             paciente.nombre = GetDataValue<string>(dr, "Nombre");
-            paciente.cliente.Id = GetDataValue<int>(dr, "ClienteId");
-            paciente.Especie.Id = GetDataValue<int>(dr, "EspecieId");
+            paciente.cliente = GetDataValue<int>(dr, "ClienteId");
+            paciente.Especie= GetDataValue<int>(dr, "EspecieId");
             paciente.fechaNacimiento = GetDataValue<DateTime>(dr, "FechaNacimiento");
             paciente.observacion = GetDataValue<string>(dr, "Observacion");
             return paciente;

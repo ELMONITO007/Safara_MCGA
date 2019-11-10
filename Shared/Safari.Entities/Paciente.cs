@@ -1,30 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
+
 
 namespace Safari.Entities
 {
+    [Serializable]
+    [DataContract]
     public class Paciente : EntityBase
     {
+        [DataMember]
         [DisplayName("Cliente")]
-        public Cliente cliente { get; set; }
-        [DisplayName("Especie")]
-        public Especie Especie { get; set; }
+        public int cliente { get; set; }
 
+        [DataMember]
+        [DisplayName("Especie")]
+        public int Especie { get; set; }
+
+        [DataMember]
         [DisplayName("Nombre")]
         public string nombre { get; set; }
 
+        [DataMember]
         [DisplayName("Fecha Naciomiento")]
         public DateTime fechaNacimiento { get; set; }
 
+        [DataMember]
         [DisplayName("Observacion")]
         public string observacion { get; set; }
 
-      [DisplayName("Id")]
-        public override int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        [DataMember]
+        [DisplayName("Id")]
+        public override int Id { get; set; }
     }
 }
 

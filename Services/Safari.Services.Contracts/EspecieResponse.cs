@@ -13,7 +13,11 @@ namespace Safari.Services.Contracts
     {
         [DataMember]
         public List<Entities.Especie> obtenerTodos { get; set; }
+
+        [DataMember]
         public Especie obtenerUno { get; set; }
+
+        [DataMember]
         public Especie agregar { get; set; }
     }
 }

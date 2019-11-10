@@ -13,7 +13,7 @@ using System.Web.Http;
 namespace Safari.Services.Http
 {
     [RoutePrefix("api/Especie")]
-    public  class EspecieServiceHttp :ApiController
+    public  class EspecieServiceHttp :ApiController, IServiceHttp<EspecieResponse,EspecieRequest>
     {
         [HttpGet]
         [Route("ListarTodos")]
@@ -41,9 +41,35 @@ namespace Safari.Services.Http
                 
             }
         }
+
+
+
+        [HttpPost]
+        [Route("Actualizar")]
+        public void Actualizar(EspecieRequest agregarRequest)
+        {
+            try
+            {
+
+                var bc = new EspecieComponent();
+                bc.Update(agregarRequest.Especie);
+
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422, // UNPROCESSABLE ENTITY
+                    ReasonPhrase = ex.Message
+                };
+                throw new HttpResponseException(httpError);
+            }
+        }
+
+
         [HttpGet]
-        [Route("ListarUno")]
-        public EspecieResponse ListarUno(int id)
+        [Route("ObtenerUno")]
+        public EspecieResponse ObtenerUno(int id)
         {
             try
             {
@@ -64,17 +90,40 @@ namespace Safari.Services.Http
 
             }
         }
+        [HttpGet]
+        [Route("Eliminar")]
+        public void Eliminar(int id)
+        {
+            try
+            {
 
+                var bc = new EspecieComponent();
+                bc.Delete(id);
+
+
+            }
+            catch (Exception ex)
+            {
+
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+                throw new HttpResponseException(httpError);
+
+            }
+        }
         [HttpPost]
         [Route("Agregar")]
-        public EspecieResponse Agregar(EspecieRequest request)
+        public void Crear(EspecieRequest agregarRequest)
         {
             try
             {
                 var response = new EspecieResponse();
                 var bc = new EspecieComponent();
-                response.agregar = bc.Create(request.Especie);
-                return response;
+                bc.Create(agregarRequest.Especie);
+               
             }
             catch (Exception ex)
             {
@@ -86,7 +135,5 @@ namespace Safari.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
-
-
     }
 }

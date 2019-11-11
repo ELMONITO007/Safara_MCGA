@@ -4,42 +4,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace Safari.Entities
 {
+    [Serializable]
+    [DataContract]
     public class Cita : EntityBase
     {
+        [DataMember]
         [DisplayName("Fecha de la cita")]
         public DateTime fecha { get; set; }
 
+        [DataMember]
         [DisplayName("Medico")]
-        public Medico medico { get; set; }
+        public int medico { get; set; }
 
+        [DataMember]
         [DisplayName("Paciente")]
-        public Paciente Paciente { get; set; }
+        public int Paciente { get; set; }
 
+        [DataMember]
         [DisplayName("Sala")]
-        public Sala sala { get; set; }
+        public int sala { get; set; }
 
+        [DataMember]
         [DisplayName("Tipo de servicio")]
-        public TipoServicio tipoServicio { get; set; }
+        public int tipoServicio { get; set; }
 
+        [DataMember]
         [DisplayName("Estado")]
         public string estado { get; set; }
 
+       
         public int createBy { get; set; }
+      
         public DateTime createDate { get; set; }
-
+       
         public int changeBy { get; set; }
+       
         public DateTime changeDate { get; set; }
-
+      
         public int deleteBy { get; set; }
+       
         public DateTime deleteDate { get; set; }
 
-
+      
         public int delete { get; set; }
 
-
-        public override int Id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        [DataMember]
+        public override int Id { get; set; }
     }
 }

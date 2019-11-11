@@ -14,16 +14,16 @@ namespace Safari.Data
     {
         public Cita Create(Cita entity)
         {
-            const string SQL_STATEMENT = "insert into Cita (Fecha,MedicoId,PacienteId,SalaId,TipoServicioId,Estado,CreatedBy,CreatedDate)values(@fecha,@MedicoId,@PacienteId,@SalaId,@TipoServicioId,@Estado,@CreateBy,@CreatedDate); SELECT SCOPE_IDENTITY();";
+            const string SQL_STATEMENT = "insert into Cita (Fecha,MedicoId,PacienteId,SalaId,TipoServicioId,Estado)values(@fecha,@MedicoId,@PacienteId,@SalaId,@TipoServicioId,@Estado); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@fecha", DbType.DateTime, entity.fecha);
-                db.AddInParameter(cmd, "@MedicoId", DbType.Int32, entity.medico.Id);
-                db.AddInParameter(cmd, "@PacienteId", DbType.Int32, entity.Paciente.Id);
-                db.AddInParameter(cmd, "@SalaId", DbType.Int32, entity.sala.Id);
-                db.AddInParameter(cmd, "@TipoServicioId", DbType.Int32, entity.tipoServicio.Id);
+                db.AddInParameter(cmd, "@MedicoId", DbType.Int32, entity.medico);
+                db.AddInParameter(cmd, "@PacienteId", DbType.Int32, entity.Paciente);
+                db.AddInParameter(cmd, "@SalaId", DbType.Int32, entity.sala);
+                db.AddInParameter(cmd, "@TipoServicioId", DbType.Int32, entity.tipoServicio);
                 db.AddInParameter(cmd, "@Estado", DbType.String, entity.estado);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.Int32, entity.createBy);
                 db.AddInParameter(cmd, "@CreateDate", DbType.DateTime, entity.createDate);
@@ -94,10 +94,10 @@ namespace Safari.Data
             {
                 db.AddInParameter(cmd, "@Id", DbType.Int32, entity.Id);
                 db.AddInParameter(cmd, "@fecha", DbType.DateTime, entity.fecha);
-                db.AddInParameter(cmd, "@MedicoId", DbType.Int32, entity.medico.Id);
-                db.AddInParameter(cmd, "@PacienteId", DbType.Int32, entity.Paciente.Id);
-                db.AddInParameter(cmd, "@SalaId", DbType.Int32, entity.sala.Id);
-                db.AddInParameter(cmd, "@TipoServicioId", DbType.Int32, entity.tipoServicio.Id);
+                db.AddInParameter(cmd, "@MedicoId", DbType.Int32, entity.medico);
+                db.AddInParameter(cmd, "@PacienteId", DbType.Int32, entity.Paciente);
+                db.AddInParameter(cmd, "@SalaId", DbType.Int32, entity.sala);
+                db.AddInParameter(cmd, "@TipoServicioId", DbType.Int32, entity.tipoServicio);
                 db.AddInParameter(cmd, "@Estado", DbType.String, entity.estado);
                 db.AddInParameter(cmd, "@ChangeBy", DbType.Int32,2);
                 db.AddInParameter(cmd, "@ChangeDate", DbType.DateTime, DateTime.Now);
@@ -110,10 +110,10 @@ namespace Safari.Data
             Cita cita = new Cita();
             cita.Id = GetDataValue<int>(dr, "Id");
             cita.fecha = GetDataValue<DateTime>(dr, "Fecha");
-            cita.medico.Id = GetDataValue<int>(dr, "MedicoId");
-            cita.Paciente.Id = GetDataValue<int>(dr, "PacienteId");
-            cita.sala.Id = GetDataValue<int>(dr, "SalaId");
-            cita.tipoServicio.Id = GetDataValue<int>(dr, "TipoServicioId");
+            cita.medico = GetDataValue<int>(dr, "MedicoId");
+            cita.Paciente = GetDataValue<int>(dr, "PacienteId");
+            cita.sala = GetDataValue<int>(dr, "SalaId");
+            cita.tipoServicio = GetDataValue<int>(dr, "TipoServicioId");
             cita.estado = GetDataValue<string>(dr, "Estado");
             return cita;
         }

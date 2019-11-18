@@ -17,7 +17,7 @@ namespace Safari.UI.Process
 
         {
           
-            var response1 = HttpGet<PacienteResponse>("api/Precio/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
+            var response1 = HttpGet<PrecioResponse>("api/Precio/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
             return response1.obtenerTodos;
 
             

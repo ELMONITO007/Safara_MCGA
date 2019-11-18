@@ -11,13 +11,14 @@ namespace Safari.Services.Contracts
     [DataContract]
     public partial class EspecieResponse
     {
-        [DataMember]
-        public List<Entities.Especie> obtenerTodos { get; set; }
 
         [DataMember]
-        public Especie obtenerUno { get; set; }
+        public new List<Entities.Especie> obtenerTodos { get; set; }
 
         [DataMember]
-        public Especie agregar { get; set; }
+        public  Especie obtenerUno { get; set; }
+
+        [DataMember]
+        public  Especie agregar { get; set; }
     }
 }

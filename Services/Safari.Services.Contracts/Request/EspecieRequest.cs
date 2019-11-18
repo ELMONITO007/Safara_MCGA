@@ -12,6 +12,12 @@ namespace Safari.Services.Contracts.Request
     public class EspecieRequest
     {
         [DataMember]
-        public Especie Especie { get; set; }
-    }
+        public  Especie especie { get; set; }
+       public EspecieRequest()
+        {
+
+            especie = new Especie();
+        }
+       
+        }
 }

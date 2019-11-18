@@ -58,8 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitaProcess.cs" />
     <Compile Include="EspeciesProcess.cs" />
+    <Compile Include="IProcess.cs" />
     <Compile Include="MediaType.cs" />
+    <Compile Include="MedicoProcess.cs" />
     <Compile Include="MovimientoProcess.cs" />
     <Compile Include="PrecioProcess.cs" />
     <Compile Include="Process.cs" />

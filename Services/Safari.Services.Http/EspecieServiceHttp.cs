@@ -52,7 +52,7 @@ namespace Safari.Services.Http
             {
 
                 var bc = new EspecieComponent();
-                bc.Update(agregarRequest.Especie);
+                bc.Update(agregarRequest.especie);
 
             }
             catch (Exception ex)
@@ -90,7 +90,7 @@ namespace Safari.Services.Http
 
             }
         }
-        [HttpGet]
+        [HttpPost]
         [Route("Eliminar")]
         public void Eliminar(int id)
         {
@@ -122,7 +122,7 @@ namespace Safari.Services.Http
             {
                 var response = new EspecieResponse();
                 var bc = new EspecieComponent();
-                bc.Create(agregarRequest.Especie);
+                bc.Create(agregarRequest.especie);
                
             }
             catch (Exception ex)

@@ -1,13 +1,14 @@
-﻿using Safari.Entities;
+﻿
+using Safari.Services.Contracts;
+using Safari.Services.Contracts.Request;
 using Safari.UI.Process;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
+
 namespace Safari.UI.Web.Controllers
-{ [Authorize]
+{
+    [Authorize]
     public class EspecieController : Controller
 
     {
@@ -22,11 +23,12 @@ namespace Safari.UI.Web.Controllers
 
 
         // GET: Especie/Details/5
-        [Route("Detalles_Especie", Name = "EspecieControllerRouteDetails")]
+        //[Route("Detalles_Especie", Name = "EspecieControllerRouteDetails")]
         public ActionResult Details(int id)
         {
             EspeciesProcess ep = new EspeciesProcess();
-            return View();
+
+            return View(ep.ObtenerUno(id));
         }
 
         // GET: Especie/Create
@@ -42,15 +44,19 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
+                EspecieRequest especieResponse = new EspecieRequest();
                 EspeciesProcess ep = new EspeciesProcess();
-                Especie especie = new Especie();
-                especie.Nombre = collection.Get("Nombre");
-                
-                return RedirectToAction("Especie");
+               
+                especieResponse.especie.Nombre = collection.Get("Nombre");
+              
+                ep.Agregar(especieResponse);
+
+                return RedirectToAction("index");
             }
-            catch
+                catch (Exception e)
             {
-                return View();
+                return RedirectToAction("index");
+                throw;
             }
         }
 
@@ -68,12 +74,15 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
+                EspecieRequest especieResponse = new EspecieRequest();
                 EspeciesProcess ep = new EspeciesProcess();
-                Especie especie = new Especie();
-                especie.Id = Convert.ToInt32(collection.Get("Id"));
-                especie.Nombre = collection.Get("Nombre");
-             
-                return RedirectToAction("Especie");
+
+                especieResponse.especie.Id = Convert.ToInt32(collection.Get("Id"));
+                especieResponse.especie.Nombre = collection.Get("Nombre");
+           
+                ep.Actualizar(especieResponse);
+
+                return RedirectToAction("index");
             }
             catch
             {
@@ -96,12 +105,13 @@ namespace Safari.UI.Web.Controllers
             try
             {
                 EspeciesProcess ep = new EspeciesProcess();
+                ep.Eliminar(id);
                
-                return RedirectToAction("Especie");
+                return RedirectToAction("index");
             }
-            catch
+            catch(Exception e)
             {
-                return View();
+                return View();  
             }
         }
     }

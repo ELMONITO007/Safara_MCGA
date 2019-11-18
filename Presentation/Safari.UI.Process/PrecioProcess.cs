@@ -1,6 +1,7 @@
 ﻿using Safari.Entities;
 using Safari.Services;
 using Safari.Services.Contracts;
+using Safari.Services.Contracts.Request;
 using Safari.Services.Http;
 using System;
 using System.Collections.Generic;
@@ -11,69 +12,33 @@ using System.Threading.Tasks;
 
 namespace Safari.UI.Process
 {
-    public class PrecioProcess : ProcessComponent
+    public class PrecioProcess : ProcessComponent, IProcess<Precio, PrecioRequest>
     {
+        public void Actualizar(PrecioRequest request)
+        {
+            var response = HttpPost("api/Precio/Actualizar", request, MediaType.Json);
+        }
+
+        public void Agregar(PrecioRequest request)
+        {
+            var response = HttpPost("api/Precio/Agregar", request, MediaType.Json);
+        }
+
+        public void Eliminar(int id)
+        {
+            var response = HttpPost("api/Precio/Eliminar", id, MediaType.Json);
+        }
+
+        public Precio ObtenerUno(int id)
+        {
+            var response = HttpGet<PrecioResponse>("api/Precio/ObtenerUno", new Dictionary<string, object>(id), MediaType.Json);
+            return response.obtenerUno;
+        }
+
         public IList<Precio> ToList()
-
         {
-          
-            var response1 = HttpGet<PrecioResponse>("api/Precio/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
-            return response1.obtenerTodos;
-
-            
-            //return response.obtenerTodos;
-        }
-
-
-
-        public Precio Agregar(Precio objeto)
-        {
-            Precio result = default(Precio);
-            
-            return result;
-        }
-
-        public Precio Editar(int id, Precio objeto)
-        {
-            Precio result = default(Precio);
-            
-
-            return result;
-        }
-
-        public Precio Eliminar(int id)
-        {
-            Precio result = default(Precio);
-           
-
-            return result;
-        }
-
-        public List<Precio> ListarTodos()
-        {
-            List<Precio> result = default(List<Precio>);
-            
-
-
-            try
-            {
-               
-            }
-            catch (FaultException fex)
-            {
-                throw new ApplicationException(fex.Message);
-            }
-            return result;
-        }
-
-        public Precio Ver(int id)
-        {
-            Precio result = default(Precio);
-          
-
-          
-
-            return result;
+            var response = HttpGet<PrecioResponse>("api/Precio/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
+            return response.obtenerTodos;
         }
     }
 }

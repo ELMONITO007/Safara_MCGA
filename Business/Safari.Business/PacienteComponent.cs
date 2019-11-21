@@ -48,5 +48,15 @@ namespace Safari.Business
             var pacienteDAC = new PacienteDAC();
             pacienteDAC.Update(objeto);
         }
+        public List<Paciente> obtenerTodosPacienteCLiente(int cliente)
+        {
+            List<Paciente> result = default(List<Paciente>);
+
+            var pacienteDAC = new PacienteDAC();
+            result = pacienteDAC.ReadByClient(cliente);
+            return result;
+        }
+
+
     }
 }

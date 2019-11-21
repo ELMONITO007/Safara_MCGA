@@ -130,5 +130,6 @@ namespace Safari.Data
             paciente.observacion = GetDataValue<string>(dr, "Observacion");
             return paciente;
         }
-    }
+        public List<string> obtenerTodosPacienteCLiente()
+      
 }

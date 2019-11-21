@@ -135,8 +135,31 @@ namespace Safari.Services.Http
             }
         }
 
-        
 
-       
+        [HttpGet]
+        [Route("ListarTodosCliente")]
+        public PacienteResponse ListarTodosDeCliente(int cliente)
+        {
+            try
+            {
+                var response = new PacienteResponse();
+                var bc = new PacienteComponent();
+                response.obtenerTodos = bc.obtenerTodosPacienteCLiente(cliente);
+                return response;
+
+            }
+            catch (Exception ex)
+            {
+
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+                throw new HttpResponseException(httpError);
+
+            }
+        }
+
     }
 }

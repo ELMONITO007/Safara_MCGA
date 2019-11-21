@@ -180,6 +180,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Constants\Application.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EspecieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -304,11 +305,14 @@
     <Content Include="Views\Especie\Details.cshtml" />
     <Content Include="Views\Movimiento\Create.cshtml" />
     <Content Include="Views\Movimiento\Details.cshtml" />
+    <Content Include="Views\Movimiento\Edit.cshtml" />
+    <Content Include="Views\Movimiento\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Home\" />
+    <Folder Include="Views\Cliente\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

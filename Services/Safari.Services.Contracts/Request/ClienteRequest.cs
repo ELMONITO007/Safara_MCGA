@@ -14,5 +14,10 @@ namespace Safari.Services.Contracts.Request
 
         [DataMember]
         public Cliente cliente { get; set; }
+
+        public ClienteRequest()
+        {
+            cliente = new Cliente();
+        }
     }
 }

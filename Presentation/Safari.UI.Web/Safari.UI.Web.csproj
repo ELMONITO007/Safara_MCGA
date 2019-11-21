@@ -351,6 +351,7 @@
     <Content Include="Views\Cita\Create.cshtml" />
     <Content Include="Views\Cita\Edit.cshtml" />
     <Content Include="Views\Cita\Delete.cshtml" />
+    <Content Include="Views\Paciente\ListarTodosDeCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

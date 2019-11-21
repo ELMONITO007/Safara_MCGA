@@ -20,6 +20,14 @@ namespace Safari.UI.Web.Controllers
             var lista = pp.ToList();
             return View(lista);
         }
+        [Route("ListarTodosDelCliente", Name = "ListarTodosDeClienteControllerRouteIndex")]
+        // GET: Paciente
+        public ActionResult ListarTodosDeCliente(int id)
+        {
+            PacienteProcess pp = new PacienteProcess();
+            var lista = pp.ListarTodosDeCliente(id);
+            return View(lista);
+        }
 
         [Route("Detalle_Medico", Name = "PacienteControllerRouteDetails")]
         // GET: Paciente/Details/5

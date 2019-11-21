@@ -57,7 +57,7 @@ namespace Safari.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
-        [HttpGet]
+        [HttpPost]
         [Route("Eliminar")]
         public void Eliminar(int id)
         {

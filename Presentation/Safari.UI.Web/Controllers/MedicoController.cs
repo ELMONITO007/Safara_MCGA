@@ -98,7 +98,7 @@ namespace Safari.UI.Web.Controllers
                 medicoProcess.Actualizar(medicoRequest);
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
                 return View();
             }

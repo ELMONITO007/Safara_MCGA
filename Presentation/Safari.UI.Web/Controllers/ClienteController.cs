@@ -33,6 +33,8 @@ namespace Safari.UI.Web.Controllers
         // GET: Cliente/Create
         public ActionResult Create()
         {
+            EspeciesProcess ep = new EspeciesProcess();
+            var lista = ep.ToList();
             return View();
         }
 
@@ -50,7 +52,7 @@ namespace Safari.UI.Web.Controllers
                 clienteRequest.cliente.Email = collection.Get("Email");
                 clienteRequest.cliente.Telefono = collection.Get("Telefono");
                 clienteRequest.cliente.Url = collection.Get("Url");
-                clienteRequest.cliente.FechaNacimiento =DateTime.Parse( collection.Get("Nombre"));
+                clienteRequest.cliente.FechaNacimiento =DateTime.Parse( collection.Get("FechaNacimiento"));
                 clienteRequest.cliente.Domicilio = collection.Get("Domicilio");
               
                 mc.Agregar(clienteRequest);
@@ -64,12 +66,14 @@ namespace Safari.UI.Web.Controllers
             }
         }
 
+        [Route("Editar_Cliente", Name = "ClienteControllerRouteEditGet")]
         // GET: Cliente/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
+        [Route("Editar_Cliente", Name = "ClienteControllerRouteEditPost")]
         // POST: Cliente/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -97,6 +101,7 @@ namespace Safari.UI.Web.Controllers
             }
         }
 
+        [Route("Eliminar_Cliente", Name = "ClienteControllerRouteDeleteGet")]
         // GET: Cliente/Delete/5
         public ActionResult Delete(int id)
         {
@@ -105,6 +110,7 @@ namespace Safari.UI.Web.Controllers
             return View(lista);
         }
 
+        [Route("Eliminar_Cliente", Name = "ClienteControllerRouteDeletePost")]
         // POST: Cliente/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

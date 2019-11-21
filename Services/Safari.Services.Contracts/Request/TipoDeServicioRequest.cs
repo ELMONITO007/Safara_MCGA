@@ -12,5 +12,9 @@ namespace Safari.Services.Contracts.Request
     {
         [DataMember]
         public TipoServicio tipoServicio { get; set; }
+        public  TipoDeServicioRequest()
+        {
+            tipoServicio = new TipoServicio();
+        }
     }
 }

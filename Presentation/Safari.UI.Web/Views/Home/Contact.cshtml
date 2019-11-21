@@ -23,18 +23,40 @@
         SiteName = Application.Name
     };
 }
-}
+
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Google Maps JavaScript API Example</title>
+    <script src="http://maps.google.com/maps?file=api&v=2&key=AIzaSyDAXO4TiH-LvwVcmf9_qDS-PtlUuFW-578"
+            type="text/javascript"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        function load() {
+            if (GBrowserIsCompatible()) {
+                var map = new GMap2(document.getElementById("map"));
+                map.setCenter(new GLatLng(37.4419, -122.1419), 13);
+            }
+        }
+        //]]>
+    </script>
+
+    </head>
+
+    <address>
+        Juan de Arco 2255<br />
+        Castelar, Buenos aires<br />
+        <abbr title="Telefono">Telefono:</abbr>
+        +5411 5555-0100
+    </address>
+
+    <address>
+        <strong>Soporte:</strong>   <a href="mailto:Support@sudamericangreen.net">Support@sudamericangreen.net</a><br />
+        <strong>Informacion:</strong> <a href="mailto:info@sudamericangreen.net">info@sudamericangreen.net</a>
+    </address>
+
+
+

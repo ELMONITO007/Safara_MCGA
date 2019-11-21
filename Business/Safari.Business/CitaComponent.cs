@@ -14,6 +14,13 @@ namespace Safari.Business
         {
             Cita result = default(Cita);
             var citaDAC = new CitaDAC();
+            objeto.changeBy = 0;
+            objeto.changeDate = DateTime.Now;
+            objeto.createBy = 1;
+            objeto.createDate = DateTime.Now;
+            objeto.delete = 0;
+            objeto.deleteBy = 0;
+            objeto.deleteDate = DateTime.Now;
 
             result = citaDAC.Create(objeto);
             return result;

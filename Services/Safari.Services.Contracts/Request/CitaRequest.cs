@@ -13,5 +13,9 @@ namespace Safari.Services.Contracts.Request
     {
         [DataMember]
         public Cita cita { get; set; }
+        public  CitaRequest()
+        {
+            cita = new Cita();
+        }
     }
 }

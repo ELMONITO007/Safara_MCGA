@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Safari.Entities;
+﻿
+using Safari.Services.Contracts;
+using Safari.Services.Contracts.Request;
 using Safari.UI.Process;
+using System;
+using System.Web.Mvc;
 
 namespace Safari.UI.Web.Controllers
 {
@@ -15,8 +14,9 @@ namespace Safari.UI.Web.Controllers
         // GET: TipoServicio
         public ActionResult Index()
         {
-            TipoServicioController ep = new TipoServicioController();
-            return View();
+            TipoServicioProcess ep = new TipoServicioProcess();
+            var lista = ep.ToList();
+            return View(lista);
         }
 
 
@@ -24,8 +24,9 @@ namespace Safari.UI.Web.Controllers
         // GET: TipoServicio/Details/5
         public ActionResult Details(int id)
         {
-            TipoServicioController ep = new TipoServicioController();
-            return View();
+            TipoServicioProcess ep = new TipoServicioProcess();
+            var lista = ep.ObtenerUno(id);
+            return View(lista);
         }
 
         [Route("Crear_TipoServicio", Name = "TipoServicioControllerRouteCreateGet")]
@@ -41,8 +42,11 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                TipoServicioProcess ep = new TipoServicioProcess();
+                TipoDeServicioRequest tipoDeServicioRequest = new TipoDeServicioRequest();
 
+                tipoDeServicioRequest.tipoServicio.Nombre = collection.Get("Nombre");
+                ep.Agregar(tipoDeServicioRequest);
                 return RedirectToAction("Index");
             }
             catch
@@ -51,20 +55,26 @@ namespace Safari.UI.Web.Controllers
             }
         }
 
+        [Route("Editar_TipoServicio", Name = "TipoServicioControllerRouteEditGet")]
         // GET: TipoServicio/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
+        [Route("Editar_TipoServicio", Name = "TipoServicioControllerRouteEditPost")]
         // POST: TipoServicio/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                TipoServicioProcess ep = new TipoServicioProcess();
+                TipoDeServicioRequest tipoDeServicioRequest = new TipoDeServicioRequest();
 
+                tipoDeServicioRequest.tipoServicio.Nombre = collection.Get("Nombre");
+                tipoDeServicioRequest.tipoServicio.Id =int.Parse( collection.Get("Id"));
+                ep.Actualizar(tipoDeServicioRequest);
                 return RedirectToAction("Index");
             }
             catch
@@ -72,6 +82,7 @@ namespace Safari.UI.Web.Controllers
                 return View();
             }
         }
+        [Route("Eliminar_TipoServicio", Name = "TipoServicioControllerRouteDeleteGet")]
 
         // GET: TipoServicio/Delete/5
         public ActionResult Delete(int id)
@@ -79,13 +90,16 @@ namespace Safari.UI.Web.Controllers
             return View();
         }
 
+
+        [Route("Eliminar_TipoServicio", Name = "TipoServicioControllerRouteDeletePost")]
         // POST: TipoServicio/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                TipoServicioProcess ep = new TipoServicioProcess();
+                ep.Eliminar(id);
 
                 return RedirectToAction("Index");
             }

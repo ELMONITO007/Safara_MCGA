@@ -47,7 +47,7 @@ namespace Safari.Data
 
         public List<Cita> Read()
         {
-            const string SQL_STATEMENT = "select id,Fecha,MedicoId,PacienteId,SalaId,TipoServicioId,Estado from cita ";
+            const string SQL_STATEMENT = "select * from cita ";
 
             List<Cita> result = new List<Cita>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -67,7 +67,7 @@ namespace Safari.Data
 
         public Cita ReadBy(int id)
         {
-            const string SQL_STATEMENT = "select id,Fecha,MedicoId,PacienteId,SalaId,TipoServicioId,Estado from cita ";
+            const string SQL_STATEMENT = "select * from cita ";
             Cita cita = null;
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);

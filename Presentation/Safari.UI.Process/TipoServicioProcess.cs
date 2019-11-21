@@ -16,28 +16,28 @@ namespace Safari.UI.Process
     {
         public void Actualizar(TipoDeServicioRequest request)
         {
-            var response = HttpPost("api/TipoDeServicio/Actualizar", request, MediaType.Json);
+            var response = HttpPost("api/TipoServicio/Actualizar", request, MediaType.Json);
         }
 
         public void Agregar(TipoDeServicioRequest request)
         {
-            var response = HttpPost("api/TipoDeServicio/Agregar", request, MediaType.Json);
+            var response = HttpPost("api/TipoServicio/Agregar", request, MediaType.Json);
         }
 
         public void Eliminar(int id)
         {
-            var response = HttpPost("api/TipoDeServicio/Eliminar", id, MediaType.Json);
+            var response = HttpPost("api/TipoServicio/Eliminar", id, MediaType.Json);
         }
 
         public TipoServicio ObtenerUno(int id)
         {
-            var response = HttpGet<TipoDeServicioReponse>("api/TipoDeServicio/ObtenerUno", new Dictionary<string, object>(id), MediaType.Json);
+            var response = HttpGet<TipoDeServicioReponse>("api/TipoServicio/ObtenerUno", new Dictionary<string, object>(id), MediaType.Json);
             return response.obtenerUno;
         }
 
         public IList<TipoServicio> ToList()
         {
-            var response = HttpGet<TipoDeServicioReponse>("api/TipoDeServicio/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<TipoDeServicioReponse>("api/TipoServicio/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
             return response.obtenerTodos;
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Safari.Entities;
+using Safari.Services.Contracts.Request;
 using Safari.UI.Process;
 using System;
 using System.Collections.Generic;
@@ -26,14 +27,28 @@ namespace Safari.UI.Web.Controllers
         // GET: Precio/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            PrecioProcess ep = new PrecioProcess();
+
+            var lista = ep.ObtenerUno(id);
+            return View(lista);
         }
 
         [Route("Crear_Precio", Name = "PrecioControllerRouteCreateGet")]
         // GET: Precio/Create
         public ActionResult Create()
         {
-            return View();
+            try
+            {
+                TipoServicioProcess ep = new TipoServicioProcess();
+                ViewBag.TipoServicio = new SelectList(ep.ToList(), "Id", "Nombre");
+                return View();
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+           
         }
 
         [Route("Crear_Precio", Name = "PrecioControllerRouteCreatePost")]
@@ -43,11 +58,18 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                PrecioProcess ep = new PrecioProcess();
+                PrecioRequest precio = new PrecioRequest();
+                precio.Precio.fechaDesde =DateTime.Parse( collection.Get("fechaDesde"));
+                precio.Precio.fechaHasta = DateTime.Parse(collection.Get("fechaHasta"));
+                precio.Precio.tipoServicioID = int.Parse(collection.Get("tipoServicioID"));
+                precio.Precio.valor = int.Parse(collection.Get("valor"));
+                
+                ep.Agregar(precio);
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception e)
             {
                 return View();
             }
@@ -65,7 +87,15 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+                PrecioProcess ep = new PrecioProcess();
+                PrecioRequest precio = new PrecioRequest();
+                precio.Precio.fechaDesde = DateTime.Parse(collection.Get("fechaDesde"));
+                precio.Precio.fechaHasta = DateTime.Parse(collection.Get("fechaHasta"));
+                precio.Precio.tipoServicioID = int.Parse(collection.Get("tipoServicioID"));
+                precio.Precio.valor = int.Parse(collection.Get("valor"));
+                precio.Precio.Id = int.Parse(collection.Get("Id"));
+
+                ep.Agregar(precio);
 
                 return RedirectToAction("Index");
             }
@@ -90,7 +120,8 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                PrecioProcess ep = new PrecioProcess();
+                ep.Eliminar(id);
 
                 return RedirectToAction("Index");
             }

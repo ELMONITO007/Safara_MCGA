@@ -13,5 +13,9 @@ namespace Safari.Services.Contracts.Request
     {
         [DataMember]
         public Precio Precio { get; set; }
+        public PrecioRequest()
+        {
+            Precio = new Precio();
+        }
     }
 }

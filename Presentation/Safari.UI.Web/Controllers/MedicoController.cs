@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Safari.Entities;
+﻿using Safari.Services.Contracts;
+using Safari.Services.Contracts.Request;
 using Safari.UI.Process;
+using System;
+using System.Web.Mvc;
+
 
 namespace Safari.UI.Web.Controllers
 {
@@ -15,16 +14,18 @@ namespace Safari.UI.Web.Controllers
         [Route("Medico", Name = "MedicoControllerRouteIndex")]
         public ActionResult Index()
         {
-          
-            return View();
+            MedicoProcess mc = new MedicoProcess();
+            var lista = mc.ToList();
+            return View(lista);
         }
 
         // GET: Medico/Details/5
         [Route("Detalle_Medico", Name = "MedicoControllerRouteDetails")]
         public ActionResult Details(int id)
         {
-           
-            return View();
+            MedicoProcess mc = new MedicoProcess();
+            var lista = mc.ObtenerUno(id);
+            return View(lista);
         }
 
         // GET: Medico/Create
@@ -41,24 +42,24 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
-               
-                Medico medico = new Medico();
-                
-                medico.Nombre = collection.Get("Nombre");
-                medico.Apellido = collection.Get("Apellido");
-                medico.Email = collection.Get("Email");
-                medico.Especialidad = collection.Get("Especialidad");
-                medico.FechaNacimiento =DateTime.Parse( collection.Get("FechaNacimiento"));
-                medico.NumeroMatricula=int.Parse(collection.Get("NumeroMatricula"));
-                medico.Telefono=collection.Get("Telefono");
-                medico.TipoMatricula= collection.Get("TipoMatricula");
+                MedicoRequest medicoRequest = new MedicoRequest();
+                MedicoProcess medicoProcess = new MedicoProcess();
 
+               medicoRequest.medico.Nombre = collection.Get("Nombre");
+               medicoRequest.medico.Apellido = collection.Get("Apellido");
+               medicoRequest.medico.Email = collection.Get("Email");
+               medicoRequest.medico.Especialidad = collection.Get("Especialidad");
+               medicoRequest.medico.FechaNacimiento =DateTime.Parse( collection.Get("FechaNacimiento"));
+               medicoRequest.medico.NumeroMatricula=int.Parse(collection.Get("NumeroMatricula"));
+               medicoRequest.medico.Telefono=collection.Get("Telefono");
+               medicoRequest.medico.TipoMatricula= collection.Get("TipoMatricula");
 
+                medicoProcess.Agregar(medicoRequest);
 
                
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception e)
             {
                 return View();
             }
@@ -80,17 +81,21 @@ namespace Safari.UI.Web.Controllers
             try
             {
             
-                Medico medico = new Medico();
-                medico.Id = Convert.ToInt32(collection.Get("Id"));
-                medico.Nombre = collection.Get("Nombre");
-                medico.Apellido = collection.Get("Apellido");
-                medico.Email = collection.Get("Email");
-                medico.Especialidad = collection.Get("Especialidad");
-                medico.FechaNacimiento = DateTime.Parse(collection.Get("FechaNacimiento"));
-                medico.NumeroMatricula = int.Parse(collection.Get("NumeroMatricula"));
-                medico.Telefono = collection.Get("Telefono");
-                medico.TipoMatricula = collection.Get("TipoMatricula");
+            
                 
+                MedicoRequest medicoRequest = new MedicoRequest();
+                MedicoProcess medicoProcess = new MedicoProcess();
+
+                medicoRequest.medico.Id = id;
+                medicoRequest.medico.Nombre = collection.Get("Nombre");
+                medicoRequest.medico.Apellido = collection.Get("Apellido");
+                medicoRequest.medico.Email = collection.Get("Email");
+                medicoRequest.medico.Especialidad = collection.Get("Especialidad");
+                medicoRequest.medico.FechaNacimiento = DateTime.Parse(collection.Get("FechaNacimiento"));
+                medicoRequest.medico.NumeroMatricula = int.Parse(collection.Get("NumeroMatricula"));
+                medicoRequest.medico.Telefono = collection.Get("Telefono");
+                medicoRequest.medico.TipoMatricula = collection.Get("TipoMatricula");
+                medicoProcess.Actualizar(medicoRequest);
                 return RedirectToAction("Index");
             }
             catch
@@ -114,8 +119,9 @@ namespace Safari.UI.Web.Controllers
         {
             try
             {
-               
-             
+                
+                MedicoProcess medicoProcess = new MedicoProcess();
+                medicoProcess.Eliminar(id);
                 return RedirectToAction("Index");
               
             }

@@ -12,7 +12,7 @@ using System.Web.Http;
 
 namespace Safari.Services.Http
 {
-    [RoutePrefix("api/TipoMoviento")]
+    [RoutePrefix("api/TipoMovimiento")]
     public class TipoMovimientoServiceHTTP : ApiController, IServiceHttp<TipoMovimientoResponse, TipoMovimientoRequest>
     {
         [HttpPost]

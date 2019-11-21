@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Safari.Entities;
+﻿
+using Safari.Services.Contracts;
+using Safari.Services.Contracts.Request;
 using Safari.UI.Process;
+using System;
+using System.Web.Mvc;
 
 namespace Safari.UI.Web.Controllers
 {
@@ -15,7 +14,9 @@ namespace Safari.UI.Web.Controllers
         // GET: TipoMovimiento
         public ActionResult Index()
         {
-            return View();
+            TipoMovimientoProcess tp = new TipoMovimientoProcess();
+            var lista = tp.ToList();
+            return View(lista);
         }
 
         [Route("Detalle_TipoMovimiento", Name = "TipoMovimientoControllerRouteDetails")]

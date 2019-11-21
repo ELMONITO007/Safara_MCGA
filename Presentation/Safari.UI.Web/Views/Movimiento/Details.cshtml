@@ -1,0 +1,44 @@
+﻿@model Safari.Entities.Movimiento
+
+<div>
+    <h4>Movimiento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoMovimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoMovimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

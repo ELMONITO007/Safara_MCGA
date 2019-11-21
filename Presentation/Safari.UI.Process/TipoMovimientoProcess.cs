@@ -38,8 +38,17 @@ namespace Safari.UI.Process
 
         public IList<TipoMovimiento> ToList()
         {
-            var response = HttpGet<TipoMovimientoResponse>("api/TipoMovimiento/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
-            return response.obtenerTodos;
+            try
+            {
+                var response = HttpGet<TipoMovimientoResponse>("api/TipoMovimiento/ListarTodos", new Dictionary<string, object>(), MediaType.Json);
+                return response.obtenerTodos;
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            
         }
     }
 }

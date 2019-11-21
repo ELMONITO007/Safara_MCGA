@@ -45,8 +45,9 @@ namespace Safari.UI.Process
 
         public void Eliminar(int especie)
         {
-            var response = HttpPost("api/Especie/Eliminar", especie, MediaType.Json);
-          
+            var response = new EspecieServiceHttp();
+            response.Eliminar(especie);
+    
         }
 
         //public List<Especie> ListarTodos()

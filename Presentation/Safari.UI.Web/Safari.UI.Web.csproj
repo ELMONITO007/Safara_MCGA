@@ -302,6 +302,8 @@
     <Content Include="Views\Movimiento\Index.cshtml" />
     <Content Include="Views\Precio\Index.cshtml" />
     <Content Include="Views\Especie\Details.cshtml" />
+    <Content Include="Views\Movimiento\Create.cshtml" />
+    <Content Include="Views\Movimiento\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,6 +318,10 @@
     <ProjectReference Include="..\..\Services\Safari.Services.Contracts\Safari.Services.Contracts.csproj">
       <Project>{aed38724-3f4a-4128-8843-e65d4d821b41}</Project>
       <Name>Safari.Services.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Safari.Entities\Safari.Entities.csproj">
+      <Project>{DED5F661-C299-47EB-AE50-B64BE8FEEBC9}</Project>
+      <Name>Safari.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Safari.UI.Process\Safari.UI.Process.csproj">
       <Project>{7B34EC89-2823-4817-ADAD-942A08C1AC24}</Project>

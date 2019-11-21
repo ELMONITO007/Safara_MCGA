@@ -23,12 +23,12 @@ namespace Safari.UI.Web.Controllers
 
 
         // GET: Especie/Details/5
-        //[Route("Detalles_Especie", Name = "EspecieControllerRouteDetails")]
+        [Route("Detalles_Especie", Name = "EspecieControllerRouteDetails")]
         public ActionResult Details(int id)
         {
             EspeciesProcess ep = new EspeciesProcess();
-
-            return View(ep.ObtenerUno(id));
+            var lista = ep.ObtenerUno(id);
+            return View(lista);
         }
 
         // GET: Especie/Create

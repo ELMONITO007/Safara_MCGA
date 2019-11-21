@@ -13,6 +13,10 @@ namespace Safari.Services.Contracts.Request
     {
         [DataMember]
         public Paciente paciente { get; set; }
+        public PacienteRequest()
+        {
+            paciente = new Paciente();
 
+        }
     }
 }

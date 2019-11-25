@@ -32,7 +32,9 @@ namespace Safari.UI.Process
 
         public Especie ObtenerUno(int id)
         {
-            var response = HttpGet<EspecieResponse>("api/Especie/ObtenerUno", new Dictionary<string, object>(id), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<EspecieResponse>("api/Especie/ObtenerUno", parameters, MediaType.Json);
             return response.obtenerUno;
         }
 

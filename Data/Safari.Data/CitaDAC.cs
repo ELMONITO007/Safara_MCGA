@@ -36,7 +36,7 @@ namespace Safari.Data
 
         public void Delete(int id)
         {
-            const string SQL_STATEMENT = "DELETE Cita WHERE [Id]= @Id ";
+            const string SQL_STATEMENT = "update cita set Deleted=1 where Id=1";
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
@@ -47,7 +47,7 @@ namespace Safari.Data
 
         public List<Cita> Read()
         {
-            const string SQL_STATEMENT = "select * from cita ";
+            const string SQL_STATEMENT = "select * from cita where Deleted=0";
 
             List<Cita> result = new List<Cita>();
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);

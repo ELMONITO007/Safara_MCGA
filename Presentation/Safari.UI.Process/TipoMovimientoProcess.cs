@@ -32,7 +32,9 @@ namespace Safari.UI.Process
 
         public TipoMovimiento ObtenerUno(int id)
         {
-            var response = HttpGet<TipoMovimientoResponse>("api/TipoMovimiento/ObtenerUno", new Dictionary<string, object>(id), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<TipoMovimientoResponse>("api/TipoMovimiento/ObtenerUno",parameters, MediaType.Json);
             return response.obtenerUno;
         }
 

@@ -70,6 +70,8 @@ namespace Safari.UI.Web.Controllers
         // GET: Cliente/Edit/5
         public ActionResult Edit(int id)
         {
+            ClienteProcess cp = new ClienteProcess();
+            var result = cp.ObtenerUno(id);
             return View();
         }
 

@@ -31,8 +31,9 @@ namespace Safari.UI.Process
 
         public Paciente ObtenerUno(int id)
         {
-
-            var response = HttpGet<PacienteResponse>("api/Paciente/ObtenerUno", new Dictionary<string, object>(id), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<PacienteResponse>("api/Paciente/ObtenerUno", parameters, MediaType.Json);
             return response.obtenerUno;
         }
 

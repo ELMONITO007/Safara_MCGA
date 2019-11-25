@@ -31,7 +31,9 @@ namespace Safari.UI.Process
 
         public Sala ObtenerUno(int id)
         {
-            var response = HttpGet<SalaResponse>("api/Sala/ObtenerUno", new Dictionary<string, object>(id), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<SalaResponse>("api/Sala/ObtenerUno", parameters, MediaType.Json);
             return response.obtenerUno;
         }
 

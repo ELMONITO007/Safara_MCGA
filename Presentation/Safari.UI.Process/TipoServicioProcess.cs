@@ -31,7 +31,9 @@ namespace Safari.UI.Process
 
         public TipoServicio ObtenerUno(int id)
         {
-            var response = HttpGet<TipoDeServicioReponse>("api/TipoServicio/ObtenerUno", new Dictionary<string, object>(id), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<TipoDeServicioReponse>("api/TipoServicio/ObtenerUno", parameters, MediaType.Json);
             return response.obtenerUno;
         }
 

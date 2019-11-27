@@ -44,7 +44,9 @@ namespace Safari.UI.Process
         }
         public IList<Paciente> ListarTodosDeCliente(int id)
         {
-            var response = HttpGet<PacienteResponse>("api/Paciente/ListarTodosCliente", new Dictionary<string, object>(id), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("cliente", id);
+            var response = HttpGet<PacienteResponse>("api/Paciente/ListarTodosCliente", parameters, MediaType.Json);
             return response.obtenerTodos;
         }
     }

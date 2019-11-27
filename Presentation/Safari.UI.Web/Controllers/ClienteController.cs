@@ -129,5 +129,20 @@ namespace Safari.UI.Web.Controllers
                 return View();
             }
         }
+        public ActionResult ObtenerPacientes(int id)
+        {
+            try
+            {
+                PacienteProcess mc = new PacienteProcess();
+               var lista= mc.ListarTodosDeCliente(id);
+
+                return View(lista);
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
+        }
+
     }
 }

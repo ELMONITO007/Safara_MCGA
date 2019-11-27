@@ -233,6 +233,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PacienteClienteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -368,6 +369,7 @@
     <Content Include="Views\Cita\Edit.cshtml" />
     <Content Include="Views\Cita\Delete.cshtml" />
     <Content Include="Views\Paciente\ListarTodosDeCliente.cshtml" />
+    <Content Include="Views\Cliente\ObtenerPacientes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace Safari.Entities
 {
@@ -12,9 +13,14 @@ namespace Safari.Entities
     [DataContract]
     public class Cita : EntityBase
     {
+
+        [DataType(DataType.Date, ErrorMessage = "Ingrese en formato fecha dd/mm/aaaa")]
+        [Required]
         [DataMember]
         [DisplayName("Fecha de la cita")]
+        
         public DateTime fecha { get; set; }
+
 
         [DataMember]
         [DisplayName("Medico")]
@@ -32,6 +38,8 @@ namespace Safari.Entities
         [DisplayName("Tipo de servicio")]
         public int tipoServicio { get; set; }
 
+        [DataType(DataType.Text, ErrorMessage = "Ingrese texto")]
+        [Required]
         [DataMember]
         [DisplayName("Estado")]
         public string estado { get; set; }

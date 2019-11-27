@@ -19,11 +19,13 @@ namespace Safari.Entities
 
         [DataMember]
         [DisplayName("Nombre")]
+        [DataType(DataType.DateTime, ErrorMessage = "Ingrese texto")]
         [Required]
         public string Nombre { get; set; }
 
         [DataMember]
         [DisplayName("Tipo de Sala")]
+        [DataType(DataType.DateTime, ErrorMessage = "Ingrese texto")]
         [Required]
         public string TipoSala
         {

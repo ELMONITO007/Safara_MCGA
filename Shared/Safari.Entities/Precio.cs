@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 
@@ -15,7 +16,7 @@ namespace Safari.Entities
         public DateTime _fechaDesde;
         public DateTime _fechaHasta;
         public int _valor;
-
+        [Required]
         [DataMember]
         [DisplayName("Valor")]
         public int valor
@@ -39,8 +40,10 @@ namespace Safari.Entities
                 NotifyPropertyChanged("Tipo de servicio");
             }
         }
+        [Required]
         [DataMember]
         [DisplayName("Desde")]
+        [DataType(DataType.DateTime, ErrorMessage = "Ingrese texto")]
         public DateTime fechaDesde
         {
             get { return _fechaDesde; }
@@ -50,8 +53,9 @@ namespace Safari.Entities
                 NotifyPropertyChanged("Desde");
             }
         }
-
+        [Required]
         [DataMember]
+        [DataType(DataType.DateTime, ErrorMessage = "Ingrese texto")]
         [DisplayName("Hasta")]
 
         public DateTime fechaHasta

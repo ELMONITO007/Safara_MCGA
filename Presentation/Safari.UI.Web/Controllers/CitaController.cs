@@ -14,6 +14,7 @@ namespace Safari.UI.Web.Controllers
         
             // GET: Cita
             [Route("cita", Name = "CitaControllerRouteIndex")]
+           
             public ActionResult Index()
             {
                 CitaProcess pp = new CitaProcess();

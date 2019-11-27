@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 
@@ -19,6 +20,10 @@ namespace Safari.Entities
         [DisplayName("Id")]
         public override int Id { get; set; }
 
+
+        [DataType(DataType.EmailAddress, ErrorMessage = "Ingrese texto")]
+
+        [Required]
         [DataMember]
         [DisplayName("Nombre")]
         public string Nombre
